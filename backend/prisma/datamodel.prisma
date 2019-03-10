@@ -1,0 +1,52 @@
+type User {
+  id: ID! @unique
+  name: String!
+  email: String!
+  country: String!
+}
+
+type Product {
+  id: ID! @unique
+  title: String!
+  description: String!
+  image: String
+  largeImage: String
+  price: Int!
+  available: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Price {
+  id: ID! @unique
+  price: Int!
+  discount: Int
+}
+
+type Stock {
+  id: ID! @unique
+  quantityOnStock: Int!
+  location: StockLocation!
+}
+
+type StockLocation {
+  id: ID! @unique
+  name: String!
+}
+
+type Category {
+  id: ID! @unique
+  name: String!
+}
+
+type ProductImages {
+  id: ID! @unique
+}
+
+type OrderItem {
+
+}
+
+type Order {
+
+}
