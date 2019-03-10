@@ -28,9 +28,7 @@ class Dashboard extends Component {
           <p>Side nav</p>
         </SideNav>
         <Main>
-          <Router>
-            <Route exact path='/' component={Home} />
-          </Router>
+          <Home />
         </Main>
         <Footer>
           <p>Footer</p>

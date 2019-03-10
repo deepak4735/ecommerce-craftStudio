@@ -3,12 +3,8 @@ import React from 'react';
 // Import styles
 import { MainContainer } from './styles';
 
-const Main = () => {
-  return (
-    <MainContainer>
-      <p>Main</p>
-    </MainContainer>
-  );
+const Main = props => {
+  return <MainContainer>{props.children}</MainContainer>;
 };
 
 export default Main;

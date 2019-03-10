@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const MainContainer = styled.aside`
+export const MainContainer = styled.main`
   grid-area: main;
   background-color: cornsilk;
 `;
