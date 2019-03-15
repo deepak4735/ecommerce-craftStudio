@@ -3,8 +3,8 @@ projects:
     schemaPath: src/schema.graphql
     extensions:
       endpoints:
-        dev: 'http://localhost:9412'
+        dev: 'http://localhost:4444'
   prisma:
     schemaPath: 'src/generated/prisma.graphql'
     extensions:
-      prisma: prisma.yml
+      prisma: prisma/prisma.yml

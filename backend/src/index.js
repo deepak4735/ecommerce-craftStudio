@@ -1,17 +1,19 @@
+const cookieParser = require('cookie-parser');
 require('dotenv').config({ path: '.env' });
 const createServer = require('./createServer');
 const db = require('./db');
 
 const server = createServer();
 
-// TODO use express middlware to handle cookies
-// TODO use express middlware to populate current user
+server.express.use(cookieParser());
+
+// TODO: use express middlware to populate current user
 
 server.start(
   {
     cors: {
       credentials: true,
-      origin: process.env.FRONT_END_URL
+      origin: [process.env.FRONT_END_ENDPOINT, process.env.ADMIN_END_POINT]
     }
   },
   deets => {
