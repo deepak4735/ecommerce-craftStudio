@@ -14,7 +14,7 @@ const Mutations = {
         data: {
           ...args,
           password,
-          permissions: { set: ['ADMIN'] }
+          permissions: { set: ['USER'] }
         }
       },
       info
