@@ -11,7 +11,6 @@ const SIGNIN_MUTATION = gql`
     signIn(email: $email, password: $password) {
       id
       email
-      name
     }
   }
 `;
@@ -33,10 +32,11 @@ class SignIn extends Component {
       <Mutation mutation={SIGNIN_MUTATION} variables={this.state}>
         {(signIn, { error, loading }) => (
           <Form
-            method='POST'
-            onSubmit={e => {
+            method='post'
+            onSubmit={async e => {
               e.preventDefault();
-              signIn();
+              const res = await signIn();
+              console.log(res);
             }}
           >
             <fieldset disabled={loading} aria-busy={loading}>
@@ -52,7 +52,7 @@ class SignIn extends Component {
                 />
               </Label>
               <Label htmlFor='password'>
-                Email
+                Password
                 <Input
                   type='password'
                   name='password'
