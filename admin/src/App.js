@@ -3,14 +3,16 @@ import { GlobalStyle } from './globalStyles/globalStyles';
 
 // Import components
 import Dashboard from './scenes/dashboard/index';
-import SignIn from './scenes/signIn/index';
+import GuardComponent from './scenes/guardComponent/index';
 
 class App extends Component {
   render() {
     return (
       <>
         <GlobalStyle />
-        <SignIn />
+        <GuardComponent>
+          <Dashboard />
+        </GuardComponent>
       </>
     );
   }

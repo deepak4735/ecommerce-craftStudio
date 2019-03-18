@@ -6,6 +6,8 @@ import gql from 'graphql-tag';
 import { Form, Label, Input } from './styles';
 
 // GraphQL
+import { CURRENT_USER_QUERY } from '../../components/User/user';
+
 const SIGNIN_MUTATION = gql`
   mutation SIGNIN_MUTATION($email: String!, $password: String!) {
     signIn(email: $email, password: $password) {
@@ -29,14 +31,19 @@ class SignIn extends Component {
 
   render() {
     return (
-      <Mutation mutation={SIGNIN_MUTATION} variables={this.state}>
+      <Mutation
+        mutation={SIGNIN_MUTATION}
+        variables={this.state}
+        // Looks up the apollo store, after the mutation is run
+        refetchQueries={[{ query: CURRENT_USER_QUERY }]}
+      >
         {(signIn, { error, loading }) => (
           <Form
             method='post'
             onSubmit={async e => {
               e.preventDefault();
               const res = await signIn();
-              console.log(res);
+              return res;
             }}
           >
             <fieldset disabled={loading} aria-busy={loading}>

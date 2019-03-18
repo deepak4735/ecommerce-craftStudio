@@ -8,7 +8,7 @@ import Main from './components/Main/main';
 import Footer from './components/Footer/footer';
 
 // Import scenes
-import Home from '../home/index';
+import Home from './scenes/home/index';
 
 // Import styles
 import { DashboardContainer } from './styles';

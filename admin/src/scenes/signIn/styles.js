@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
 export const Form = styled.form`
-  width: 50rem;
-  height: 30rem;
-  border: 1px solid black;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
 `;
 
 export const Label = styled.label``;

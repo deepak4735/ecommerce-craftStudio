@@ -20,7 +20,6 @@ const Home = () => {
         if (error) return <div>Error</div>;
 
         const userData = data.users;
-        console.log(userData);
 
         return (
           <div>
@@ -29,6 +28,7 @@ const Home = () => {
                 <p>{link.name}</p>
                 <p>{link.email}</p>
                 <p>{link.id}</p>
+                <p>{link.permissions}</p>
               </>
             ))}
           </div>

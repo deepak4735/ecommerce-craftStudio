@@ -9,4 +9,5 @@ export const DashboardContainer = styled.div`
     'sidenav main'
     'sidenav footer';
   height: 100vh;
+  overflow: hidden;
 `;
