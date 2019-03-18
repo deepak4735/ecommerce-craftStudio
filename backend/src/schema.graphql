@@ -1,4 +1,7 @@
 # import * from './generated/prisma.graphql'
+type SuccessMessage {
+  message: String
+}
 
 type Mutation {
   createUser(
@@ -8,6 +11,7 @@ type Mutation {
     permissions: UserCreatepermissionsInput
   ): User!
   signIn(email: String!, password: String!): User!
+  signOut: SuccessMessage
 }
 
 type Query {

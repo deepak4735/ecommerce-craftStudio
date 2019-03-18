@@ -1,5 +1,5 @@
 const bcrypt = require('bcryptjs');
-const jtw = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 
 const Mutations = {
   async createUser(parent, args, ctx, info) {
@@ -20,7 +20,7 @@ const Mutations = {
       info
     );
     // create JWT token
-    const token = jtw.sign({ userId: user.id }, process.env.APP_SECRET);
+    const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
 
     // set the jwt as a cookie on the res
     ctx.response.cookie('token', token, {
@@ -31,25 +31,29 @@ const Mutations = {
     return user;
   },
   async signIn(parent, { email, password }, ctx, info) {
-    // check if there is user with that email
+    // 1. check if there is a user with that email
     const user = await ctx.db.query.user({ where: { email } });
     if (!user) {
-      throw new Error('No such user found for email!');
+      throw new Error(`No such user found for email ${email}`);
     }
-    // check if their password is correct
+    // 2. Check if their password is correct
     const valid = await bcrypt.compare(password, user.password);
     if (!valid) {
-      throw new Error('Invalid password');
+      throw new Error('Invalid Password!');
     }
-    // generate jwt token
-    const token = jtw.sign({ userId: user.id }, process.env.APP_SECRET);
-    // set the cookie with the token
+    // 3. generate the JWT Token
+    const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
+    // 4. Set the cookie with the token
     ctx.response.cookie('token', token, {
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24 * 365
     });
-    // return the user
+    // 5. Return the user
     return user;
+  },
+  signOut(parent, args, ctx, info) {
+    ctx.response.clearCookie('token');
+    return { message: 'Goodbye!' };
   }
 };
 

@@ -25,7 +25,7 @@ function createServer() {
     },
     // We need to access the db from resolvers, which we
     // can do via context
-    context: req => ({ ...req, db })
+    context: request => ({ ...request, db })
   });
 }
 
