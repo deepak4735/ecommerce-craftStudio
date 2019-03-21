@@ -18,8 +18,7 @@ type User {
 #   id: ID! @unique
 #   title: String!
 #   description: String!
-#   image: String
-#   largeImage: String
+#   productImages: [ProductImage]!
 #   price: Int!
 #   available: Boolean!
 #   createdAt: DateTime!
@@ -48,8 +47,12 @@ type User {
 #   name: String!
 # }
 
-# type ProductImages {
+# type ProductImage {
 #   id: ID! @unique
+#   title: String!
+#   thumbnail: String
+#   image: String!
+#   largeImage: String!
 # }
 
 # type OrderItem {
