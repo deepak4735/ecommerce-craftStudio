@@ -4,7 +4,7 @@ export const GlobalStyle = createGlobalStyle`
   html {
     box-sizing: border-box;
     font-size: 10px;
-
+    font-family: 'Roboto', sans-serif;
   }
   *, *:before, *:after {
     box-sizing: inherit;
@@ -18,6 +18,14 @@ export const GlobalStyle = createGlobalStyle`
   }
   a {
     text-decoration: none;
-    color: black;
+    color: white;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  input:focus {
+    outline: none !important;
   }
 `;

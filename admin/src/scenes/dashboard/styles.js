@@ -5,9 +5,9 @@ export const DashboardContainer = styled.div`
   grid-template-columns: 240px 1fr;
   grid-template-rows: 50px 1fr 50px;
   grid-template-areas:
-    'sidenav header'
+    'header header'
     'sidenav main'
-    'sidenav footer';
+    'sidenav main';
   height: 100vh;
   overflow: hidden;
 `;

@@ -2,39 +2,14 @@ import React from 'react';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 
-const LOAD_USERS = gql`
-  {
-    users {
-      id
-      name
-      email
-    }
-  }
-`;
+// Import styles
+import { HomeContainer } from './styles';
 
 const Home = () => {
   return (
-    <Query query={LOAD_USERS}>
-      {({ loading, error, data }) => {
-        if (loading) return <div>Fetching</div>;
-        if (error) return <div>Error</div>;
-
-        const userData = data.users;
-
-        return (
-          <div>
-            {userData.map(link => (
-              <>
-                <p>{link.name}</p>
-                <p>{link.email}</p>
-                <p>{link.id}</p>
-                <p>{link.permissions}</p>
-              </>
-            ))}
-          </div>
-        );
-      }}
-    </Query>
+    <HomeContainer>
+      <p>Home</p>
+    </HomeContainer>
   );
 };
 

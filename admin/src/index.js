@@ -4,16 +4,13 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { ApolloProvider } from 'react-apollo';
 import { client } from './services/apolloClient';
-import { ThemeProvider } from 'styled-components';
-
-// Import theme and globalstyles
-import { theme } from './globalStyles/theme';
+import { BrowserRouter } from 'react-router-dom';
 
 const app = (
   <ApolloProvider client={client}>
-    <ThemeProvider theme={theme}>
+    <BrowserRouter>
       <App />
-    </ThemeProvider>
+    </BrowserRouter>
   </ApolloProvider>
 );
 

@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
 
 // Import components
 import SignIn from '../signIn/index';

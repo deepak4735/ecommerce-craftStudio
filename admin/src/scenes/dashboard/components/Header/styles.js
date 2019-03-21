@@ -1,18 +1,34 @@
 import styled from 'styled-components';
+// import { Delete } from '@material-ui/icons/Delete';
 
 export const HeaderContainer = styled.header`
   grid-area: header;
   width: 100%;
   height: 100%;
-  background-color: crimson;
+  /* background-color: crimson; */
   display: flex;
   justify-content: space-between;
-  padding: 0 2rem 0 2rem;
+  align-items: center;
+  background: ${props => props.theme.darkSecondary};
+  /* margin: 0 2rem 0 2rem; */
+`;
+
+export const CompanyNameAndLogo = styled.div`
+  flex: 0 1 24rem;
+  padding-left: 2rem;
+  display: flex;
+  align-items: center;
+
+  h2 {
+    margin: 0;
+    color: white;
+  }
 `;
 
 export const UserInfoContainer = styled.div`
-  flex: 0 1 20rem;
+  flex: 0 1 15rem;
   display: flex;
+  align-items: center;
   justify-content: flex-end;
 
   p:nth-child(2) {
@@ -22,11 +38,23 @@ export const UserInfoContainer = styled.div`
 
 export const SearchContainer = styled.div`
   display: flex;
-  height: 100%;
+  flex: 1;
+  align-items: center;
+  border-radius: 0.65rem;
+  background: #ccc9c0;
+  height: 70%;
+
+  svg {
+    color: white;
+    padding-left: 1rem;
+  }
 
   input {
     background-color: transparent;
     border: none;
+    width: 100%;
+    padding: 1rem;
+    color: white;
 
     :active {
       border: none;

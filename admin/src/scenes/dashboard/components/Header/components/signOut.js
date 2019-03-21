@@ -1,4 +1,5 @@
 import React from 'react';
+import HighlightOff from '@material-ui/icons/HighlightOff';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import { CURRENT_USER_QUERY } from '../../../../../components/User/user';
@@ -16,7 +17,15 @@ const SignOut = props => (
     mutation={SIGN_OUT_MUTATION}
     refetchQueries={[{ query: CURRENT_USER_QUERY }]}
   >
-    {signOut => <button onClick={signOut}> SignOut</button>}
+    {signOut => (
+      <button
+        style={{ background: 'transparent', border: 'none', cursor: 'pointer' }}
+        onClick={signOut}
+      >
+        {' '}
+        <HighlightOff />
+      </button>
+    )}
   </Mutation>
 );
 
