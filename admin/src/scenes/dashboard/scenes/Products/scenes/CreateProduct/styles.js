@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const CreateProductContainer = styled.div`
+export const CreateProductForm = styled.form`
   grid-area: main;
   background: ${props => props.theme.primary};
   padding-right: ${props => props.theme.defaultPadding};
@@ -89,6 +89,13 @@ export const Input = styled.input`
   padding: 0 1rem 0 1rem;
   border: 1px solid lightgray;
   /* border: 1px solid yellowgreen; */
+`;
+
+export const Select = styled.select`
+  flex: 0 1 4rem;
+  border-radius: 0.32rem;
+  padding: 0 1rem 0 1rem;
+  border: 1px solid lightgray;
 `;
 
 export const TextArea = styled.textarea`
