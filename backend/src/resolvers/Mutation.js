@@ -112,6 +112,22 @@ const Mutations = {
     });
     // 8. return the new user
     return updatedUser;
+  },
+  async createProduct(parent, args, ctx, info) {
+    if (!ctx.request.userId) {
+      throw new Error('You must be logged in to do that');
+    }
+    const images = [...args.productImages];
+    const product = await ctx.db.mutation.createProduct(
+      {
+        data: {
+          ...args,
+          productImages: { ...args.productImages }
+        }
+      },
+      info
+    );
+    return product;
   }
 };
 

@@ -18,11 +18,19 @@ type Mutation {
     password: String!
     confirmedPassword: String!
   ): User!
+  createProduct(
+    title: String!
+    description: String!
+    price: Int!
+    productImages: ProductImageCreateManyWithoutProductInput
+    available: Boolean!
+  ): Product!
 }
 
 type Query {
   users: [User]!
   currentUser: User
+  allProducts: [Product]!
 }
 
 type User {

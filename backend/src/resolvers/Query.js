@@ -15,6 +15,10 @@ const Query = {
       },
       info
     );
+  },
+  async allProducts(parent, agrs, ctx, info) {
+    const products = await ctx.db.query.products();
+    return products;
   }
 };
 

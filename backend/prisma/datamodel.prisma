@@ -14,16 +14,16 @@ type User {
   permissions: [Permission]
 }
 
-# type Product {
-#   id: ID! @unique
-#   title: String!
-#   description: String!
-#   productImages: [ProductImage]!
-#   price: Int!
-#   available: Boolean!
-#   createdAt: DateTime!
-#   updatedAt: DateTime!
-# }
+type Product {
+  id: ID! @unique
+  title: String!
+  description: String!
+  productImages: [ProductImage!]!
+  price: Int!
+  available: Boolean @default(value: "false")
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
 
 # type Price {
 #   id: ID! @unique
@@ -47,13 +47,14 @@ type User {
 #   name: String!
 # }
 
-# type ProductImage {
-#   id: ID! @unique
-#   title: String!
-#   thumbnail: String
-#   image: String!
-#   largeImage: String!
-# }
+type ProductImage {
+  id: ID! @unique
+  title: String!
+  thumbnail: String
+  image: String!
+  largeImage: String!
+  product: Product!
+}
 
 # type OrderItem {
 
