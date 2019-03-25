@@ -32,23 +32,26 @@ const CREATE_PRODUCT_MUTATION = gql`
     $description: String!
     $price: Int!
     $available: Boolean!
-    $productImages: ProductImageCreateManyWithoutProductInput
+    $productImages: [ProductImageCreateWithoutProductInput!]
   ) {
     createProduct(
       title: $title
       description: $description
       price: $price
       available: $available
-      productImages: [
-        {
-          title: "nice-chair"
-          image: "https://res.cloudinary.com/diwu3yx6a/image/upload/v1553463076/craftstudio/bdp0aibocnuvngdvkuf8.jpg"
-          largeImage: "https://res.cloudinary.com/diwu3yx6a/image/upload/…/v1553463076/craftstudio/bdp0aibocnuvngdvkuf8.jpg"
-          thumbnail: "https://res.cloudinary.com/diwu3yx6a/image/upload/…/v1553463076/craftstudio/bdp0aibocnuvngdvkuf8.jpg"
-        }
-      ]
+      productImages: { create: $productImages, connect: { id: product.id} }
     ) {
       id
+      title
+      description
+      price
+      available
+      productImages {
+        title
+        product {
+          title
+        }
+      }
     }
   }
 `;
@@ -128,7 +131,7 @@ class CreateNewProduct extends Component {
           price,
           stock,
           available,
-          ...productImages
+          productImages
         }}
       >
         {(createProduct, { loading, error }) => (
