@@ -31,6 +31,7 @@ type Query {
   users: [User]!
   currentUser: User
   allProducts: [Product]!
+  allImages: [ProductImage]
 }
 
 type User {

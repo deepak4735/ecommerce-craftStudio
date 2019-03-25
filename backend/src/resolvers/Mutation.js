@@ -114,15 +114,14 @@ const Mutations = {
     return updatedUser;
   },
   async createProduct(parent, args, ctx, info) {
-    if (!ctx.request.userId) {
-      throw new Error('You must be logged in to do that');
-    }
-    const images = [...args.productImages];
+    // if (!ctx.request.userId) {
+    //   throw new Error('You must be logged in to do that');
+    // }
+
     const product = await ctx.db.mutation.createProduct(
       {
         data: {
-          ...args,
-          productImages: { ...args.productImages }
+          ...args
         }
       },
       info
