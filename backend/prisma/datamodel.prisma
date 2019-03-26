@@ -17,10 +17,11 @@ type User {
 type Product {
   id: ID! @unique
   title: String!
+  slug: String!
   description: String!
   productImages: [ProductImage!]!
   price: Int!
-  available: Boolean @default(value: "false")
+  available: Boolean! @default(value: "false")
   createdAt: DateTime!
   updatedAt: DateTime!
 }

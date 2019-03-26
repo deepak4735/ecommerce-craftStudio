@@ -27,17 +27,7 @@ export const BreadCrumbsContainer = styled.div`
 */
 export const ImageGalleryContainer = styled.div`
   grid-area: imageGallery;
-  display: flex;
-  /* flex-direction: column; */
-  justify-content: flex-start;
-  align-items: center;
-
-  padding: 1rem;
-
-  .create-product__image-gallery {
-    width: 100%;
-  }
-  /* border: 1px solid red; */
+  overflow: hidden;
 `;
 
 export const UploadImagesContainer = styled.div`
@@ -48,7 +38,6 @@ export const UploadImagesContainer = styled.div`
 
 export const ProductInformationContainer = styled.div`
   grid-area: productInformation;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -112,7 +101,7 @@ export const TextArea = styled.textarea`
 `;
 
 export const ElementsContainer = styled.div`
-  /* width: ${props => `${props.width}`}; */
+  width: ${props => `${props.width}`};
   /* height: ${props => `${props.height}`}; */
   flex: ${props => `${props.flex}`};
   display: flex;

@@ -16,14 +16,9 @@ const Query = {
       info
     );
   },
-  async allProducts(parent, agrs, ctx, info) {
-    const products = await ctx.db.query.products();
-    return products;
-  },
-  async allImages(parent, args, ctx, info) {
-    const images = await ctx.db.query.productImages();
-    return images;
-  }
+  products: forwardTo('db'),
+
+  productImages: forwardTo('db')
 };
 
 module.exports = Query;

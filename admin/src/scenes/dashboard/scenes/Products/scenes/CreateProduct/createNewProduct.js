@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import ImageGallery from 'react-image-gallery';
+// import ImageGallery from 'react-image-gallery';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 
@@ -8,6 +8,9 @@ import gql from 'graphql-tag';
 import AddAPhoto from '@material-ui/icons/AddAPhoto';
 
 import 'react-image-gallery/styles/css/image-gallery.css';
+
+// Import components
+import ImageGallery from '../../../../../../components/ImageGallery/imageGallery';
 
 // Import styles
 import {
@@ -39,7 +42,7 @@ const CREATE_PRODUCT_MUTATION = gql`
       description: $description
       price: $price
       available: $available
-      productImages: { create: $productImages, connect: { id: product.id} }
+      productImages: { create: $productImages }
     ) {
       id
       title
@@ -64,7 +67,8 @@ class CreateNewProduct extends Component {
     stock: 0,
     // category: '',
     available: false,
-    productImages: []
+    productImages: [],
+    loading: false
   };
 
   handleUploadImage = async e => {
@@ -73,6 +77,9 @@ class CreateNewProduct extends Component {
     data.append('file', files[0]);
     data.append('upload_preset', 'craftstudio');
 
+    this.setState({
+      loading: true
+    });
     const res = await fetch(
       'https://api.cloudinary.com/v1_1/diwu3yx6a/image/upload',
       {
@@ -93,8 +100,9 @@ class CreateNewProduct extends Component {
         }
       ]
     }));
-    console.log(file);
-    console.log(this.state.productImages);
+    this.setState({
+      loading: false
+    });
   };
 
   handleInput = e => {
@@ -112,16 +120,9 @@ class CreateNewProduct extends Component {
         });
   };
   render() {
-    const {
-      title,
-      description,
-      price,
-      stock,
-      available,
-      productImages
-    } = this.state;
+    const { title, description, price, available, productImages } = this.state;
 
-    console.log(...productImages);
+    console.log(productImages);
     return (
       <Mutation
         mutation={CREATE_PRODUCT_MUTATION}
@@ -129,7 +130,6 @@ class CreateNewProduct extends Component {
           title,
           description,
           price,
-          stock,
           available,
           productImages
         }}
@@ -147,14 +147,7 @@ class CreateNewProduct extends Component {
               <p style={{ fontSize: '1rem' }}>{this.props.location.pathname}</p>
             </BreadCrumbsContainer>
             <ImageGalleryContainer>
-              <ImageGallery
-                showPlayButton={false}
-                showFullscreenButton={false}
-                // defaultImage={'./assets/No_image.png'}
-                additionalClass='create-product__image-gallery'
-                items={this.state.productImages}
-                showNav={false}
-              />
+              <ImageGallery />
             </ImageGalleryContainer>
             <UploadImagesContainer>
               <ElementsContainer
@@ -173,21 +166,17 @@ class CreateNewProduct extends Component {
                   id='file'
                 />
               </ElementsContainer>
-              {/*
-          <ElementsContainer
-            flex='0 1 70%'
-            flexDirection='column'
-            justifyContent='center'
-          >
-            <Input
-              type='text'
-              required
-              id='fileTitle'
-              placeholder='Enter an image title'
-              onChange={e => this.handleUploadImage(e)}
-            />
-          </ElementsContainer>
-          */}
+              <ElementsContainer
+                flex='0 1 70%'
+                flexDirection='column'
+                justifyContent='center'
+              >
+                {this.state.loading === false ? (
+                  <p>Select an image for upload</p>
+                ) : (
+                  <p>Uploading...</p>
+                )}
+              </ElementsContainer>
             </UploadImagesContainer>
             <ProductInformationContainer>
               <ElementsContainer flex='0 1 15%' flexDirection='column'>
@@ -217,7 +206,11 @@ class CreateNewProduct extends Component {
                 flexDirection='row'
                 justifyContent='space-between'
               >
-                <ElementsContainer flex='0 1 45%' flexDirection='column'>
+                <ElementsContainer
+                  flex='0 1 45%'
+                  width='45%'
+                  flexDirection='column'
+                >
                   <Label htmlFor='price'>Price</Label>
                   <Input
                     type='number'
@@ -227,7 +220,11 @@ class CreateNewProduct extends Component {
                     onChange={e => this.handleInput(e)}
                   />
                 </ElementsContainer>
-                <ElementsContainer flex='0 1 45%' flexDirection='column'>
+                <ElementsContainer
+                  flex='0 1 45%'
+                  width='45%'
+                  flexDirection='column'
+                >
                   <Label htmlFor='stock'>Stock</Label>
                   <Input
                     type='number'

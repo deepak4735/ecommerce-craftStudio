@@ -4,5 +4,5 @@ export const theme = {
   darkSecondary: '#8e8d8a',
   lightAccent: '#e98074',
   darkAccent: '#e85a4f',
-  defaultPadding: '5rem'
+  defaultPadding: '3rem'
 };

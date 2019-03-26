@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { randomBytes } = require('crypto');
 const { promisify } = require('util');
+const slugify = require('slugify');
 
 const Mutations = {
   async createUser(parent, args, ctx, info) {
@@ -118,14 +119,19 @@ const Mutations = {
     //   throw new Error('You must be logged in to do that');
     // }
 
+    const slug = slugify(args.title, { lower: true });
+
     const product = await ctx.db.mutation.createProduct(
       {
         data: {
-          ...args
+          ...args,
+          slug,
+          productImages: args.productImages
         }
       },
       info
     );
+
     return product;
   }
 };

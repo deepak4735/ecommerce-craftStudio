@@ -27,11 +27,14 @@ type Mutation {
   ): Product!
 }
 
+# ProductImageCreateManyWithoutProductInput
+# [ProductImageCreateWithoutProductInput!]
+
 type Query {
   users: [User]!
   currentUser: User
-  allProducts: [Product]!
-  allImages: [ProductImage]
+  products: [Product]!
+  productImages: [ProductImage]
 }
 
 type User {
