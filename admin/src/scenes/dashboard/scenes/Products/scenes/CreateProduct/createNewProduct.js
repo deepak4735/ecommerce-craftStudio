@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 // import ImageGallery from 'react-image-gallery';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
@@ -68,7 +68,8 @@ class CreateNewProduct extends Component {
     // category: '',
     available: false,
     productImages: [],
-    loading: false
+    loading: false,
+    createComplete: false
   };
 
   handleUploadImage = async e => {
@@ -149,123 +150,125 @@ class CreateNewProduct extends Component {
             <ImageGalleryContainer>
               <ImageGallery />
             </ImageGalleryContainer>
-            <UploadImagesContainer>
-              <ElementsContainer
-                flex='0 1 25%'
-                flexDirection='row'
-                justifyContent='center'
-                alignItems='center'
-              >
-                <Label htmlFor='file' style={{ cursor: 'pointer' }}>
-                  <AddAPhoto style={{ height: '2em', width: '2em' }} />
-                </Label>
-                <Input
-                  type='file'
-                  style={{ visibility: 'hidden', position: 'absolute' }}
-                  onChange={e => this.handleUploadImage(e)}
-                  id='file'
-                />
-              </ElementsContainer>
-              <ElementsContainer
-                flex='0 1 70%'
-                flexDirection='column'
-                justifyContent='center'
-              >
-                {this.state.loading === false ? (
-                  <p>Select an image for upload</p>
-                ) : (
-                  <p>Uploading...</p>
-                )}
-              </ElementsContainer>
-            </UploadImagesContainer>
-            <ProductInformationContainer>
-              <ElementsContainer flex='0 1 15%' flexDirection='column'>
-                <Label htmlFor='title'>Title</Label>
-                <Input
-                  type='text'
-                  id='title'
-                  onChange={e => this.handleInput(e)}
-                  required
-                  placeholder='Enter a product title'
-                />
-              </ElementsContainer>
-              <ElementsContainer flex='0 1 35%' flexDirection='column'>
-                <Label htmlFor='description'>Description</Label>
-                <TextArea
-                  placeholder='Enter a product description...'
-                  required
-                  cols='30'
-                  rows='5'
-                  type='textarea'
-                  id='description'
-                  onChange={e => this.handleInput(e)}
-                />
-              </ElementsContainer>
-              <ElementsContainer
-                flex='0 1 20%'
-                flexDirection='row'
-                justifyContent='space-between'
-              >
+            <fieldset disabled={loading}>
+              <UploadImagesContainer>
                 <ElementsContainer
-                  flex='0 1 45%'
-                  width='45%'
-                  flexDirection='column'
+                  flex='0 1 25%'
+                  flexDirection='row'
+                  justifyContent='center'
+                  alignItems='center'
                 >
-                  <Label htmlFor='price'>Price</Label>
+                  <Label htmlFor='file' style={{ cursor: 'pointer' }}>
+                    <AddAPhoto style={{ height: '2em', width: '2em' }} />
+                  </Label>
                   <Input
-                    type='number'
-                    id='price'
-                    placeholder={0}
+                    type='file'
+                    style={{ visibility: 'hidden', position: 'absolute' }}
+                    onChange={e => this.handleUploadImage(e)}
+                    id='file'
+                  />
+                </ElementsContainer>
+                <ElementsContainer
+                  flex='0 1 70%'
+                  flexDirection='column'
+                  justifyContent='center'
+                >
+                  {this.state.loading === false ? (
+                    <p>Select an image for upload</p>
+                  ) : (
+                    <p>Uploading...</p>
+                  )}
+                </ElementsContainer>
+              </UploadImagesContainer>
+              <ProductInformationContainer>
+                <ElementsContainer flex='0 1 15%' flexDirection='column'>
+                  <Label htmlFor='title'>Title</Label>
+                  <Input
+                    type='text'
+                    id='title'
+                    onChange={e => this.handleInput(e)}
                     required
+                    placeholder='Enter a product title'
+                  />
+                </ElementsContainer>
+                <ElementsContainer flex='0 1 35%' flexDirection='column'>
+                  <Label htmlFor='description'>Description</Label>
+                  <TextArea
+                    placeholder='Enter a product description...'
+                    required
+                    cols='30'
+                    rows='5'
+                    type='textarea'
+                    id='description'
                     onChange={e => this.handleInput(e)}
                   />
                 </ElementsContainer>
                 <ElementsContainer
-                  flex='0 1 45%'
-                  width='45%'
-                  flexDirection='column'
+                  flex='0 1 20%'
+                  flexDirection='row'
+                  justifyContent='space-between'
                 >
-                  <Label htmlFor='stock'>Stock</Label>
-                  <Input
-                    type='number'
-                    id='stock'
-                    placeholder={0}
-                    required
-                    onChange={e => this.handleInput(e)}
-                  />
-                </ElementsContainer>
-              </ElementsContainer>
-              <ElementsContainer
-                flex='0 1 10%'
-                flexDirection='row'
-                justifyContent='space-between'
-              >
-                <ElementsContainer flex='0 1 45%' flexDirection='column'>
-                  <Label htmlFor='category'>Category</Label>
-                  <Select
-                    id='category'
-                    onChange={e => this.handleInput(e)}
-                    defaultValue='pleace select a value'
+                  <ElementsContainer
+                    flex='0 1 45%'
+                    width='45%'
+                    flexDirection='column'
                   >
-                    <option>Furniture</option>
-                    <option>Accesories</option>
-                  </Select>
+                    <Label htmlFor='price'>Price</Label>
+                    <Input
+                      type='number'
+                      id='price'
+                      placeholder={0}
+                      required
+                      onChange={e => this.handleInput(e)}
+                    />
+                  </ElementsContainer>
+                  <ElementsContainer
+                    flex='0 1 45%'
+                    width='45%'
+                    flexDirection='column'
+                  >
+                    <Label htmlFor='stock'>Stock</Label>
+                    <Input
+                      type='number'
+                      id='stock'
+                      placeholder={0}
+                      required
+                      onChange={e => this.handleInput(e)}
+                    />
+                  </ElementsContainer>
                 </ElementsContainer>
-                <ElementsContainer flex='0 1 45%' flexDirection='column'>
-                  <Label htmlFor='available'>Available</Label>
-                  <Input
-                    type='checkbox'
-                    id='available'
-                    defaultChecked={this.state.available}
-                    required
-                    onChange={e => this.handleInput(e)}
-                  />
+                <ElementsContainer
+                  flex='0 1 10%'
+                  flexDirection='row'
+                  justifyContent='space-between'
+                >
+                  <ElementsContainer flex='0 1 45%' flexDirection='column'>
+                    <Label htmlFor='category'>Category</Label>
+                    <Select
+                      id='category'
+                      onChange={e => this.handleInput(e)}
+                      defaultValue='pleace select a value'
+                    >
+                      <option>Furniture</option>
+                      <option>Accesories</option>
+                    </Select>
+                  </ElementsContainer>
+                  <ElementsContainer flex='0 1 45%' flexDirection='column'>
+                    <Label htmlFor='available'>Available</Label>
+                    <Input
+                      type='checkbox'
+                      id='available'
+                      defaultChecked={this.state.available}
+                      required
+                      onChange={e => this.handleInput(e)}
+                    />
+                  </ElementsContainer>
                 </ElementsContainer>
-              </ElementsContainer>
-            </ProductInformationContainer>
-            <CreateProduct>
-              <CreateButton>Create new product</CreateButton>
-            </CreateProduct>
+              </ProductInformationContainer>
+              <CreateProduct>
+                <CreateButton>Create new product</CreateButton>
+              </CreateProduct>
+            </fieldset>
           </CreateProductForm>
         )}
       </Mutation>
