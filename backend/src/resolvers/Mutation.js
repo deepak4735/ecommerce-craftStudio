@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const { randomBytes } = require('crypto');
 const { promisify } = require('util');
 const slugify = require('slugify');
+const { forwardTo } = require('prisma-binding');
 
 const Mutations = {
   async createUser(parent, args, ctx, info) {
@@ -133,6 +134,15 @@ const Mutations = {
     );
 
     return product;
+  },
+  async deleteProduct(parent, args, ctx, info) {
+    const where = { id: args.id };
+    return ctx.db.mutation.deleteProduct(
+      {
+        where
+      },
+      info
+    );
   }
 };
 

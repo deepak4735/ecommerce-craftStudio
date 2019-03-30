@@ -20,6 +20,7 @@ type Product {
   slug: String!
   description: String!
   productImages: [ProductImage!]!
+    @relation(name: "ProductImage", onDelete: CASCADE)
   price: Int!
   available: Boolean! @default(value: "false")
   createdAt: DateTime!
@@ -54,7 +55,7 @@ type ProductImage {
   thumbnail: String
   image: String!
   largeImage: String!
-  product: Product!
+  product: Product! @relation(name: "ProductImage", onDelete: CASCADE)
 }
 
 # type OrderItem {
