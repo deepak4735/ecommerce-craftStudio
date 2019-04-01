@@ -143,6 +143,34 @@ const Mutations = {
       },
       info
     );
+  },
+  async updateProduct(parent, args, ctx, info) {
+    // if (!ctx.request.userId) {
+    //   throw new Error('You must be logged in to do that');
+    // }
+
+    // TODO: Implement some logic for updating and adding pictures
+    const productId = args.id;
+    const { title, description, price, available } = args;
+    const updatedSlug = slugify(args.title, {
+      lower: true
+    });
+    const updatedProduct = await ctx.db.mutation.updateProduct(
+      {
+        data: {
+          title,
+          slug: updatedSlug,
+          description,
+          price,
+          available
+        },
+        where: {
+          id: productId
+        }
+      },
+      info
+    );
+    return updatedProduct;
   }
 };
 

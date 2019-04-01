@@ -26,6 +26,13 @@ type Mutation {
     available: Boolean!
   ): Product!
   deleteProduct(id: ID!): Product
+  updateProduct(
+    id: ID!
+    title: String
+    description: String
+    price: Int
+    available: Boolean
+  ): Product
 }
 
 # ProductImageCreateManyWithoutProductInput
