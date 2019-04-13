@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-// import { Delete } from '@material-ui/icons/Delete';
 
 export const HeaderContainer = styled.header`
   grid-area: header;
@@ -9,7 +8,7 @@ export const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: ${props => props.theme.darkSecondary};
+  background: ${props => props.theme.primary};
   /* margin: 0 2rem 0 2rem; */
 `;
 
@@ -38,14 +37,14 @@ export const UserInfoContainer = styled.div`
 
 export const SearchContainer = styled.div`
   display: flex;
-  flex: 1;
+  flex: 0 1 70rem;
   align-items: center;
   border-radius: 0.65rem;
-  background: #ccc9c0;
-  height: 70%;
+  background: white;
+  height: 40%;
 
   svg {
-    color: white;
+    color: ${props => props.theme.paragraphs};
     padding-left: 1rem;
   }
 

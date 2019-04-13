@@ -23,6 +23,7 @@ export const GlobalStyle = createGlobalStyle`
 
   p {
     margin: 0;
+    color: #5F6368;
   }
 
   input:focus {

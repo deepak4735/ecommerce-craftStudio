@@ -2,12 +2,7 @@ import React from 'react';
 import Search from '@material-ui/icons/Search';
 
 // Import styles
-import {
-  HeaderContainer,
-  UserInfoContainer,
-  SearchContainer,
-  CompanyNameAndLogo
-} from './styles';
+import { HeaderContainer, UserInfoContainer, SearchContainer } from './styles';
 
 // Import components
 import User from '../../../../components/User/user';
@@ -16,9 +11,6 @@ import SignOut from './components/signOut';
 const Header = () => {
   return (
     <HeaderContainer>
-      <CompanyNameAndLogo>
-        <h2>Craftstudio admin</h2>
-      </CompanyNameAndLogo>
       <SearchContainer>
         <Search />
         <input placeholder='Search...' />
