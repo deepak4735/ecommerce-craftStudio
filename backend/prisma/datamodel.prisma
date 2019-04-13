@@ -4,6 +4,13 @@ enum Permission {
   USER
 }
 
+# enum DiscountType {
+#   ALLPRODUCTS
+#   PRODUCTSPECIFIC
+#   CATEGORYSPECIFIC
+#   SHIPMENT
+# }
+
 type User {
   id: ID! @unique
   name: String!
@@ -25,7 +32,35 @@ type Product {
   available: Boolean! @default(value: "false")
   createdAt: DateTime!
   updatedAt: DateTime!
+  category: Category!
+  productVariants: [ProductVariant!]!
 }
+
+type Category {
+  id: ID! @unique
+  name: String!
+  slug: String!
+  description: String!
+  productsInCategory: [Product!]!
+}
+
+type ProductVariant {
+  id: ID! @unique
+  name: String!
+  sku: String!
+  product: Product
+}
+
+# type Voucher {
+#   id: ID! @unique
+#   code: String!
+#   discountValue: Int!
+#   validFrom: DateTime
+#   vaildTo: DateTime
+#   used: Int
+#   usageLimit: Int
+#   voucherType: [DiscountType]
+# }
 
 # type Price {
 #   id: ID! @unique
@@ -33,21 +68,18 @@ type Product {
 #   discount: Int
 # }
 
-# type Stock {
-#   id: ID! @unique
-#   quantityOnStock: Int!
-#   location: StockLocation!
-# }
+type Stock {
+  id: ID! @unique
+  quantity: Int!
+  quantityAllocated: Int
+  variant: ProductVariant
+  location: StockLocation!
+}
 
-# type StockLocation {
-#   id: ID! @unique
-#   name: String!
-# }
-
-# type Category {
-#   id: ID! @unique
-#   name: String!
-# }
+type StockLocation {
+  id: ID! @unique
+  name: String!
+}
 
 type ProductImage {
   id: ID! @unique
