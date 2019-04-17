@@ -3,6 +3,7 @@ import Home from '@material-ui/icons/Home';
 import AttachMoney from '@material-ui/icons/AttachMoney';
 import Receipt from '@material-ui/icons/Receipt';
 import Book from '@material-ui/icons/Book';
+import Category from '@material-ui/icons/Category';
 import { Link } from 'react-router-dom';
 
 // Import components
@@ -28,6 +29,10 @@ const SideNav = () => {
         <SideNavigationElement justifyContent='center'>
           <AttachMoney />
           <Link to='/products'>Products</Link>
+        </SideNavigationElement>
+        <SideNavigationElement justifyContent='center'>
+          <Category />
+          <Link to='/categories'>Categories</Link>
         </SideNavigationElement>
         <SideNavigationElement justifyContent='center'>
           <Receipt />

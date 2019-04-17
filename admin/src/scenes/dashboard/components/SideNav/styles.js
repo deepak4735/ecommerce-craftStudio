@@ -17,7 +17,7 @@ export const SideNavigation = styled.aside`
 export const SideNavigationElement = styled.div`
   width: 100%;
   height: 5rem;
-  margin: 2rem 0 2rem 0;
+  /* margin: 2rem 0 2rem 0; */
   display: flex;
   justify-content: ${props => props.justifyContent};
   align-items: center;

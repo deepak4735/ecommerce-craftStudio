@@ -4,7 +4,8 @@ import gql from 'graphql-tag';
 
 // Import components
 import { Container } from '../../../../components/Container/Container';
-import QuickStat from './components/QuickStat/QuickStat';
+import QuickStat from './components/QuickStat/quickStat';
+import OrdersList from './components/OrdersList/ordersList';
 
 // Import styles
 import { HomeContainer, QuickStatistics } from './styles';
@@ -45,8 +46,9 @@ const Home = () => {
           />
         </QuickStatistics>
       </Container>
-      <Container placement='lastestOrders'>
-        <h2>lastest orders</h2>
+      <Container placement='lastestOrders' flexDirection='column'>
+        <h2 style={{ margin: '0' }}>lastest orders</h2>
+        <OrdersList />
       </Container>
       <Container placement='revBreakDown'>
         <h2>Rev break down</h2>

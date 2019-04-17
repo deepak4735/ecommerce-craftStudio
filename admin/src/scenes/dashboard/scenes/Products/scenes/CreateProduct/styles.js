@@ -1,30 +1,90 @@
 import styled from 'styled-components';
 
-export const CreateProductForm = styled.form`
-  grid-area: main;
-  background: ${props => props.theme.primary};
-  padding-right: ${props => props.theme.defaultPadding};
-  padding-left: ${props => props.theme.defaultPadding};
-  display: grid;
-  grid-template-columns: 60% 40%;
-  grid-template-rows: 2rem 4fr 1fr;
-  grid-template-areas:
-    'breadCrumbs whiteSpace'
-    'imageGallery productInformation'
-    'UploadImagesContainer createProduct';
-`;
-
-/*
-  Only for visual test
-*/
-export const BreadCrumbsContainer = styled.div`
-  grid-area: breadCrumbs;
-  /* border: 1px solid black; */
-`;
-
 /*
   Containers
 */
+
+export const CreateProductContainer = styled.div`
+  grid-area: main;
+  display: grid;
+  background: ${props => props.theme.primary};
+  padding-right: ${props => props.theme.defaultPadding};
+
+  grid-template-rows: 7rem auto;
+  grid-template-areas:
+    'header'
+    'formArea';
+  overflow-y: hidden;
+`;
+
+export const HeaderContainer = styled.div`
+  grid-area: header;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  h3 {
+    margin: 0;
+    color: ${props => props.theme.headers};
+  }
+`;
+
+export const StepContainer = styled.div`
+  p {
+    font-size: 1.7rem;
+  }
+`;
+
+export const LeftSideContainer = styled.div`
+  grid-area: left;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+`;
+
+export const RightSideContainer = styled.div`
+  grid-area: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+/*
+  Form container
+*/
+
+export const CreateProductForm = styled.form`
+  background: ${props => props.theme.secondary};
+  border-radius: ${props => props.theme.defaultBorderRadius};
+  grid-area: formArea;
+
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas: 'left right';
+
+  padding: ${props => props.theme.defaultPadding};
+`;
+
+/*
+  Label and input fields
+*/
+export const Label = styled.label`
+  flex: 0 1 ${props => props.height};
+  color: ${props => props.theme.headers};
+`;
+
+export const Input = styled.input`
+  flex: 0 1 ${props => props.height};
+  background: ${props => props.theme.secondary};
+  width: 70%;
+  border: none;
+  border-bottom: 1px solid ${props => props.theme.headers};
+  padding: 0;
+  color: ${props => props.theme.paragraphs};
+  font-size: 100%;
+`;
+
 export const ImageGalleryContainer = styled.div`
   grid-area: imageGallery;
   overflow: hidden;
@@ -64,27 +124,27 @@ export const CreateButton = styled.button`
 /*
   Product information
 */
-export const Label = styled.label`
-  flex: 0 1 3rem;
-  font-size: 1.3rem;
-  font-weight: 550;
-  text-transform: uppercase;
-  /* border: 1px solid sandybrown; */
-`;
+// export const Label = styled.label`
+//   flex: 0 1 3rem;
+//   font-size: 1.3rem;
+//   font-weight: 550;
+//   text-transform: uppercase;
+//   /* border: 1px solid sandybrown; */
+// `;
 
-export const Input = styled.input`
-  flex: 0 1 4rem;
-  border-radius: 0.32rem;
-  padding: 0 1rem 0 1rem;
-  border: 1px solid lightgray;
-  /* border: 1px solid yellowgreen; */
-`;
+// export const Input = styled.input`
+//   flex: 0 1 4rem;
+//   border-radius: 0.32rem;
+//   padding: 0 1rem 0 1rem;
+//   /* border: 1px solid lightgray; */
+//   /* border: 1px solid yellowgreen; */
+// `;
 
 export const Select = styled.select`
   flex: 0 1 4rem;
   border-radius: 0.32rem;
   padding: 0 1rem 0 1rem;
-  border: 1px solid lightgray;
+  /* border: 1px solid lightgray; */
 `;
 
 export const TextArea = styled.textarea`
@@ -97,7 +157,6 @@ export const TextArea = styled.textarea`
   resize: none;
   overflow: auto;
   outline-color: transparent;
-  border: 1px solid lightgray;
 `;
 
 export const ElementsContainer = styled.div`

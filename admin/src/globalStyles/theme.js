@@ -6,5 +6,6 @@ export const theme = {
   headers: '#3C4857',
   paragraphs: '#5F6368',
 
+  defaultBorderRadius: '0.5rem',
   defaultPadding: '3rem'
 };

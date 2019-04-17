@@ -8,25 +8,61 @@ export const ProductContainer = styled.div`
 
   display: grid;
 
-  background: #e2e1e0;
+  background: ${props => props.theme.primary};
 
-  grid-template-columns: 70% 30%;
-  grid-template-areas: 'productsList filterOptions';
+  grid-template-rows: 8% 92%;
+  grid-template-areas:
+    'header'
+    'productsList';
 
-  border: 1px solid black;
+  padding-right: ${props => props.theme.defaultPadding};
+  /* border: 1px solid black; */
 
-  overflow: hidden;
+  /* overflow: hidden; */
+`;
+
+/*
+  Header Area
+  #########################################
+*/
+
+export const ProductHeader = styled.h2`
+  color: ${props => props.theme.headers};
+  margin: 0;
+  padding-left: 1rem;
+`;
+
+export const CreateNewProductBtn = styled.button`
+  background: transparent;
+  width: 16rem;
+  height: 3.7rem;
+  border: 1px solid ${props => props.theme.headers};
+  border-radius: ${props => props.theme.defaultBorderRadius};
+  cursor: pointer;
+
+  a {
+    color: ${props => props.theme.paragraphs};
+  }
+
+  :hover {
+    background: ${props => props.theme.headers};
+
+    a {
+      color: white;
+    }
+  }
 `;
 
 // Product Area
 export const ProductListContainer = styled.div`
   grid-area: productsList;
   display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(auto-fit, 20rem); /* Where the magic happens */
-  grid-auto-rows: 30rem;
+  justify-content: flex-start;
+  grid-template-columns: repeat(auto-fit, 18rem); /* Where the magic happens */
+  grid-auto-rows: 25rem;
   grid-gap: 2rem;
-  margin: 2rem;
+  margin-top: 2rem;
+  padding-left: 1rem;
   overflow-y: scroll;
 `;
 

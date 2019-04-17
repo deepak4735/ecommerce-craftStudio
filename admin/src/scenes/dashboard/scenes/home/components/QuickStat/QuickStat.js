@@ -23,9 +23,9 @@ const QuickStat = props => {
               <p>{statistics}</p>
               <p>{title.toLowerCase()}</p>
             </ResultContainer>
+
             <ChangeContainer>
               <p>{changeInProcent}%</p>
-              <p>more than last month</p>
             </ChangeContainer>
           </>
         ) : (
@@ -36,7 +36,6 @@ const QuickStat = props => {
             </ResultContainer>
             <ChangeContainer>
               <p>{changeInProcent}%</p>
-              <p>more than last month</p>
             </ChangeContainer>
           </>
         )}

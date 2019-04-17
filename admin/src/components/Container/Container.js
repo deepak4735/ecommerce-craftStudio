@@ -6,4 +6,10 @@ export const Container = styled.div`
   flex-direction: ${props => props.flexDirection};
   align-items: ${props => props.alignmentAlign};
   justify-content: ${props => props.alignmentJustify};
+  width: ${props => props.width};
+  height: ${props => props.height};
+
+  h2 {
+    color: ${props => props.theme.headers};
+  }
 `;
