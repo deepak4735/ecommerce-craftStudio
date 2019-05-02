@@ -11,19 +11,15 @@ import SignOut from './components/signOut';
 const Header = () => {
   return (
     <HeaderContainer>
-      <SearchContainer>
-        <Search />
-        <input placeholder='Search...' />
-      </SearchContainer>
       <UserInfoContainer>
-        <p>User: </p>
+        {/*        <p>User: </p>
         <User>
           {({ data: { currentUser } }) => {
             if (currentUser) return <p>{currentUser.name}</p>;
             return null;
           }}
         </User>
-        <SignOut />
+        <SignOut /> */}
       </UserInfoContainer>
     </HeaderContainer>
   );

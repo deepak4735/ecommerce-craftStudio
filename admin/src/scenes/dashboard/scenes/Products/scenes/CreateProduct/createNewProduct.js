@@ -11,7 +11,7 @@ import 'react-image-gallery/styles/css/image-gallery.css';
 
 // Import components
 import { Container } from '../../../../../../components/Container/Container';
-// import ImageGallery from '../../../../../../components/ImageGallery/imageGallery';
+import ImageGallery from '../../../../../../components/ImageGallery/imageGallery';
 
 // Import styles
 import {
@@ -21,16 +21,9 @@ import {
   CreateProductForm,
   RightSideContainer,
   LeftSideContainer,
-  BreadCrumbsContainer,
-  ImageGalleryContainer,
-  ProductInformationContainer,
-  UploadImagesContainer,
-  CreateProduct,
   Input,
   Label,
   TextArea,
-  ElementsContainer,
-  CreateButton,
   Select
 } from './styles';
 
@@ -71,7 +64,7 @@ class CreateNewProduct extends Component {
     description: '',
     price: 0,
     stock: 0,
-    // category: '',
+    category: '',
     available: false,
     productImages: [],
     loading: false,
@@ -154,24 +147,87 @@ class CreateNewProduct extends Component {
           <LeftSideContainer>
             <Container
               flexDirection='column'
-              height='4.4rem'
-              alignmentAlign='space-around'
+              height='6rem'
+              // alignmentAlign='space-around'
             >
-              <Label>Product title</Label>
-              <Input />
+              <Label flexBasis='45%' htmlFor='title'>
+                Product title
+              </Label>
+              <Input
+                width='70%'
+                flexBasis='55%'
+                type='text'
+                id='title'
+                placeholder='Enter the product title'
+                onChange={e => this.handleInput(e)}
+              />
             </Container>
             <Container
               flexDirection='column'
-              height='8.8rem'
+              height='12rem'
               alignmentAlign='space-around'
+              margin='2rem 0 0 0'
             >
-              <Label height='20%'>Product description</Label>
-              <Input height='80%' />
+              <Label flexBasis='35%' htmlFor='description'>
+                Product description
+              </Label>
+              <TextArea
+                flexBasis='55%'
+                width='70%'
+                cols='30'
+                rows='5'
+                id='description'
+                type='textarea'
+                onChange={e => this.handleInput(e)}
+              />
             </Container>
-            <p>LEFT IS DA BEST</p>
+            <Container
+              flexDirection='column'
+              height='27rem'
+              margin='1rem 0 0 0'
+              width='70%'
+              style={{ overflow: 'hidden' }}
+              // alignmentAlign='space-around'
+            >
+              <ImageGallery />
+            </Container>
           </LeftSideContainer>
           <RightSideContainer>
-            <p>RIGHT SIDE IS DA BEST</p>
+            <Container
+              flexDirection='column'
+              height='6rem'
+              // alignmentAlign='space-around'
+            >
+              <Label flexBasis='45%' htmlFor='price'>
+                Product price
+              </Label>
+              <Container alignmentJustify='space-between'>
+                <Input
+                  flexBasis='80%'
+                  width='80%'
+                  type='number'
+                  id='price'
+                  defaultValue={0}
+                  onChange={e => this.handleInput(e)}
+                />
+                <p>DKK</p>
+              </Container>
+            </Container>
+            <Container
+              flexDirection='column'
+              height='6rem'
+              margin='2rem 0 0 0'
+              // alignmentAlign='space-around'
+            >
+              <Label flexBasis='50%' htmlFor='category'>
+                Product category
+              </Label>
+              <Select id='category' flexBasis='50%' width='80%'>
+                <option>Test</option>
+                <option>Test</option>
+                <option>Test</option>
+              </Select>
+            </Container>
           </RightSideContainer>
         </CreateProductForm>
       </CreateProductContainer>

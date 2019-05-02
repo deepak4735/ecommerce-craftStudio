@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const Container = styled.div`
   width: 90%;
   height: 50%;
-  background: ${props => props.theme.secondary};
-  border-radius: 1rem;
+  background: ${props => props.theme.primary};
+  border-radius: ${props => props.theme.defaultBorderRadius};
   display: flex;
   flex-direction: column;
   padding-right: 1rem;

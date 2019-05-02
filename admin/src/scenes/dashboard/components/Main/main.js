@@ -17,6 +17,7 @@ const Main = () => {
           path='/products/create-new-product'
           component={CreateNewProduct}
         />
+        <Route exaxt path='/categories' component={Home} />
         <Route exact path='/orders' component={Home} />
         <Route exact path='/stock' component={Home} />
       </Switch>

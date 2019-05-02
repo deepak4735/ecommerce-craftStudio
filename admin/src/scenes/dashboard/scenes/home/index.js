@@ -13,7 +13,11 @@ import { HomeContainer, QuickStatistics } from './styles';
 const Home = () => {
   return (
     <HomeContainer>
-      <Container placement='quickStatOrders'>
+      <Container
+        placement='quickStatOrders'
+        fontSize='1.8rem'
+        alignmentAlign='space-between'
+      >
         <QuickStatistics flexDirection='column' alignItem='flex-start'>
           <h2>Overview of April</h2>
           <QuickStat
@@ -46,8 +50,12 @@ const Home = () => {
           />
         </QuickStatistics>
       </Container>
-      <Container placement='lastestOrders' flexDirection='column'>
-        <h2 style={{ margin: '0' }}>lastest orders</h2>
+      <Container
+        placement='lastestOrders'
+        flexDirection='column'
+        fontSize='1.8rem'
+      >
+        <h2 style={{ margin: '0' }}>Lastest orders</h2>
         <OrdersList />
       </Container>
       <Container placement='revBreakDown'>

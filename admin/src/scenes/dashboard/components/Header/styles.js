@@ -8,7 +8,7 @@ export const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: ${props => props.theme.primary};
+  background: ${props => props.theme.secondary};
   /* margin: 0 2rem 0 2rem; */
 `;
 
@@ -29,6 +29,7 @@ export const UserInfoContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  padding-right: ${props => props.theme.defaultPadding}
 
   p:nth-child(2) {
     margin-left: 0.5rem;

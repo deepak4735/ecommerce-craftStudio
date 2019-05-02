@@ -4,7 +4,9 @@ export const HomeContainer = styled.div`
   grid-area: main;
   width: 100%;
   height: 100%;
-  background: ${props => props.theme.primary};
+  background: ${props => props.theme.secondary};
+  padding-left: ${props => props.theme.defaultPadding};
+  padding-right: ${props => props.theme.defaultPadding};
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);

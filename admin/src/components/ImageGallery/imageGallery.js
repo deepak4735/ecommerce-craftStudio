@@ -1,23 +1,7 @@
 import React, { Component } from 'react';
 
 // Import styles
-import {
-  ImageGalleryContainer,
-  LargeSelectedImage,
-  ImagesArray,
-  ImageThumbnail
-} from './styles';
-
-const imagesGal = [
-  {
-    thumbnail:
-      'https://res.cloudinary.com/diwu3yx6a/image/upload/v1553639379/craftstudio/rywa9gzy4wm3vhzk9zxu.jpg'
-  },
-  {
-    thumbnail:
-      'https://res.cloudinary.com/diwu3yx6a/image/upload/c_scale,q_auto,w_200/v1553640186/craftstudio/xsglljy8reackmbx3lzp.jpg'
-  }
-];
+import { ImageGalleryContainer, LargeSelectedImage } from './styles';
 
 class ImageGallery extends Component {
   constructor(props) {
@@ -30,18 +14,11 @@ class ImageGallery extends Component {
         <LargeSelectedImage>
           <img
             src={
-              'https://res.cloudinary.com/diwu3yx6a/image/upload/c_scale,q_auto,w_1000/v1553634965/craftstudio/jb4oh9mqnkdglyecljkz.jpg'
+              'http://classifieds.steamboattoday.com/public/images/no-photo.png'
             }
             alt='test'
           />
         </LargeSelectedImage>
-        <ImagesArray>
-          {imagesGal.map((image, index) => (
-            <ImageThumbnail id={index}>
-              <img src={image.thumbnail} alt='jajajaj' />
-            </ImageThumbnail>
-          ))}
-        </ImagesArray>
       </ImageGalleryContainer>
     );
   }

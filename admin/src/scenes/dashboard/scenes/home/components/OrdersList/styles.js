@@ -7,8 +7,8 @@ export const Table = styled.div`
   height: 21rem;
   max-height: 21rem;
   padding: 0 1rem 0 1rem;
-  background: ${props => props.theme.secondary};
-  border-radius: 1rem;
+  background: ${props => props.theme.primary};
+  border-radius: ${props => props.theme.defaultBorderRadius};
 `;
 
 export const TableHead = styled.div`

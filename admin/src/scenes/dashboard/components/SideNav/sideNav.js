@@ -16,31 +16,48 @@ import { SideNavigation, SideNavigationElement } from './styles';
 const SideNav = () => {
   return (
     <SideNavigation>
-      <Container placement='top' />
+      <Container
+        placement='top'
+        flexDirection='column'
+        alignmentAlign='center'
+        alignmentJustify='center'
+      >
+        <h2 style={{ margin: '0' }}>Craftstudio</h2>
+      </Container>
       <Container
         placement='navElements'
         flexDirection='column'
         alignmentJustify='flex-start'
       >
         <SideNavigationElement justifyContent='center'>
+          <div />
           <Home />
           <Link to='/'>Overview</Link>
         </SideNavigationElement>
         <SideNavigationElement justifyContent='center'>
+          <div />
           <AttachMoney />
           <Link to='/products'>Products</Link>
         </SideNavigationElement>
         <SideNavigationElement justifyContent='center'>
+          <div />
           <Category />
           <Link to='/categories'>Categories</Link>
         </SideNavigationElement>
         <SideNavigationElement justifyContent='center'>
+          <div />
           <Receipt />
           <Link to='/orders'>Orders</Link>
         </SideNavigationElement>
         <SideNavigationElement justifyContent='center'>
+          <div />
           <Book />
           <Link to='/stock'>Stock</Link>
+        </SideNavigationElement>
+        <SideNavigationElement justifyContent='center'>
+          <div />
+          <Book />
+          <Link to='/stock'>Configuration</Link>
         </SideNavigationElement>
       </Container>
       <Container placement='bottom'>
