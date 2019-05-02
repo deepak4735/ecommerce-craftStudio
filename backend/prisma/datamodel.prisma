@@ -4,72 +4,98 @@ enum Permission {
   USER
 }
 
-# enum DiscountType {
-#   ALLPRODUCTS
-#   PRODUCTSPECIFIC
-#   CATEGORYSPECIFIC
-#   SHIPMENT
-# }
-
 type User {
-  id: ID! @unique
+  id: ID! @id
   name: String!
   email: String! @unique
   password: String!
   resetToken: String
   resetTokenExpiry: Float
-  permissions: [Permission]
+  permissions: [Permission] @scalarList(strategy: RELATION)
 }
 
+# product related
 type Product {
-  id: ID! @unique
+  id: ID! @id
   title: String!
   slug: String!
   description: String!
   productImages: [ProductImage!]!
-    @relation(name: "ProductImage", onDelete: CASCADE)
-  price: Int!
-  available: Boolean! @default(value: "false")
-  createdAt: DateTime!
-  updatedAt: DateTime!
+    @relation(name: "ProductImage", onDelete: "CASCADE")
+  basePrice: Money
+  isAvailable: Boolean!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
   category: Category!
-  productVariants: [ProductVariant!]!
+  productVariants: [ProductVariant]
+  productType: ProductType!
+  weight: Weight
 }
 
 type Category {
-  id: ID! @unique
+  id: ID! @id
   name: String!
   slug: String!
   description: String!
   productsInCategory: [Product!]!
 }
 
-type ProductVariant {
-  id: ID! @unique
-  name: String!
-  sku: String!
-  product: Product
+type ProductImage {
+  id: ID! @id
+  title: String!
+  thumbnail: String
+  image: String!
+  largeImage: String!
+  product: Product! @relation(name: "ProductImage", onDelete: CASCADE)
 }
 
-# type Voucher {
-#   id: ID! @unique
-#   code: String!
-#   discountValue: Int!
-#   validFrom: DateTime
-#   vaildTo: DateTime
-#   used: Int
-#   usageLimit: Int
-#   voucherType: [DiscountType]
-# }
+# Stock might need to change
+type ProductVariant {
+  id: ID! @id
+  sku: String!
+  name: String!
+  product: Product!
+  quantity: Int!
+  quantityAllocated: Int!
+  weight: Weight
+  stockQuantity: Int!
+  price: Money @relation(name: "ProductVariantPrice")
+  isAvailable: Boolean
+  costPrice: Money @relation(name: "ProductVariantCostPrice")
+}
 
-# type Price {
-#   id: ID! @unique
-#   price: Int!
-#   discount: Int
-# }
+type ProductType {
+  id: ID! @id
+  name: String!
+  shippingRequired: Boolean! @default(value: true)
+  weight: Weight
+  taxes: Tax
+  hasVariants: Boolean! @default(value: false)
+  productAttributes: [Attribute]
+    @relation(name: "ProductAttributes", onDelete: CASCADE)
+  variantAttributes: [Attribute]
+    @relation(name: "VariantAttributes", onDelete: CASCADE)
+}
 
+type Attribute {
+  id: ID! @id
+  productType: ProductType
+    @relation(name: "ProductAttributes", onDelete: CASCADE)
+  productVariantType: ProductType
+    @relation(name: "VariantAttributes", onDelete: CASCADE)
+  name: String
+  # slug: String
+  values: [AttributeValue]
+}
+
+type AttributeValue {
+  id: ID! @id
+  value: String!
+}
+
+# Stock related - might need to change from what saleor do
 type Stock {
-  id: ID! @unique
+  id: ID! @id
   quantity: Int!
   quantityAllocated: Int
   variant: ProductVariant
@@ -77,17 +103,22 @@ type Stock {
 }
 
 type StockLocation {
-  id: ID! @unique
+  id: ID! @id
   name: String!
 }
 
-type ProductImage {
-  id: ID! @unique
-  title: String!
-  thumbnail: String
-  image: String!
-  largeImage: String!
-  product: Product! @relation(name: "ProductImage", onDelete: CASCADE)
+# Money related
+type Tax {
+  id: ID! @id
+  name: String!
+  taxRate: Int!
+}
+
+type Money {
+  id: ID! @id
+  currency: String!
+  amount: Float!
+  localized: String!
 }
 
 # type OrderItem {
@@ -97,3 +128,9 @@ type ProductImage {
 # type Order {
 
 # }
+
+type Weight {
+  id: ID! @id
+  unit: String!
+  value: Float!
+}

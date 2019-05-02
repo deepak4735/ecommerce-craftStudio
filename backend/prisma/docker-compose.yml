@@ -15,7 +15,7 @@ services:
             connector: postgres
             host: host.docker.internal
             database: craftstudiolocal
-            user: craftstudiolocaladmin
+            user: admin
             password: Samsung99
             rawAccess: true
             port: '5432'

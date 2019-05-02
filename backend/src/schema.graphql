@@ -33,6 +33,7 @@ type Mutation {
     price: Int
     available: Boolean
   ): Product
+  createCategory(name: String!, slug: String!, description: String!): Category
 }
 
 # ProductImageCreateManyWithoutProductInput

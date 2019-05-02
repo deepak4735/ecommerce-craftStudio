@@ -171,6 +171,24 @@ const Mutations = {
       info
     );
     return updatedProduct;
+  },
+  async createCategory(parent, args, ctx, info) {
+    // if (!ctx.request.userId) {
+    //   throw new Error('You must be logged in to do that');
+    // }
+
+    const categorySlug = slugify(args.name, {
+      lower: true
+    });
+
+    const category = await ctx.db.mutation.createCategory({
+      data: {
+        ...args,
+        slug: categorySlug
+      }
+    });
+
+    return category;
   }
 };
 
