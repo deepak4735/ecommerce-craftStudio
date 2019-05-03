@@ -4,13 +4,13 @@ import { Query, Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 
 // Import components
-import { Container } from '../../../../components/Container/Container';
-import ProductCard from './components/ProductCard/productCard';
+import ListComponent from './components/List/list';
+import FilterOptions from './components/FilterOptions/filterOptions';
 
 // Import styles
 import {
   ProductContainer,
-  ProductListContainer,
+  ListAndFilterContainer,
   ProductHeader,
   CreateNewProductBtn
 } from './styles';
@@ -53,36 +53,14 @@ class Products extends Component {
   render() {
     return (
       <ProductContainer>
-        <Container
-          placement='header'
-          alignmentJustify='space-between'
-          alignmentAlign='center'
-          width='100%'
-        >
-          <ProductHeader>Products</ProductHeader>
-          <CreateNewProductBtn>
-            <Link to='/products/create-new-product'>Create new product</Link>
-          </CreateNewProductBtn>
-        </Container>
-        <ProductListContainer>
-          <ProductCard
-            title='Semi decent chair'
-            price={200}
-            status='unavailable'
-          />
-          <ProductCard
-            title='A really bad chair'
-            price={20}
-            status='available'
-          />
-          <ProductCard title='A black chair' price={200} status='available' />
-          <ProductCard
-            title='Semi decent chair'
-            price={240}
-            status='unavailable'
-          />
-          <ProductCard title='Great chair' price={2000} status='available' />
-        </ProductListContainer>
+        <ProductHeader>
+          <h2>Products</h2>
+          <CreateNewProductBtn>Create new product</CreateNewProductBtn>
+        </ProductHeader>
+        <ListAndFilterContainer>
+          <ListComponent />
+          <FilterOptions />
+        </ListAndFilterContainer>
       </ProductContainer>
     );
   }
