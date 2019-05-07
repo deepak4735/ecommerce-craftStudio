@@ -27,8 +27,18 @@ const ALL_PRODUCTS_QUERY = gql`
         title
         thumbnail
       }
-      price
-      available
+      basePrice {
+        currency
+        amount
+        localized
+      }
+      isAvailable
+      category {
+        id
+        name
+        slug
+        description
+      }
     }
   }
 `;
@@ -52,16 +62,27 @@ class Products extends Component {
   };
   render() {
     return (
-      <ProductContainer>
-        <ProductHeader>
-          <h2>Products</h2>
-          <CreateNewProductBtn>Create new product</CreateNewProductBtn>
-        </ProductHeader>
-        <ListAndFilterContainer>
-          <ListComponent />
-          <FilterOptions />
-        </ListAndFilterContainer>
-      </ProductContainer>
+      <Query query={ALL_PRODUCTS_QUERY} refetchQueries={ALL_PRODUCTS_QUERY}>
+        {({ data, loading, error }) => {
+          console.log(error);
+          console.log(loading);
+          if (loading) return <p>Loading..</p>;
+          return (
+            <ProductContainer>
+              <ProductHeader>
+                <h2>Products</h2>
+                <CreateNewProductBtn>
+                  <Link to='/products/create-new-product'>Create product</Link>
+                </CreateNewProductBtn>
+              </ProductHeader>
+              <ListAndFilterContainer>
+                <ListComponent />
+                <FilterOptions />
+              </ListAndFilterContainer>
+            </ProductContainer>
+          );
+        }}
+      </Query>
     );
   }
 }

@@ -3,6 +3,9 @@ import React from 'react';
 // Import styles
 import { ListContainer, ListHeaders, ProductList, HeaderItem } from './styles';
 
+// Import components
+import ListItem from './components/listItem';
+
 const ListComponent = () => {
   return (
     <ListContainer>
@@ -12,7 +15,12 @@ const ListComponent = () => {
         <HeaderItem>Available</HeaderItem>
         <HeaderItem>Category</HeaderItem>
       </ListHeaders>
-      <ProductList />
+      <ProductList>
+        <ListItem />
+        <ListItem />
+        <ListItem />
+        <ListItem />
+      </ProductList>
     </ListContainer>
   );
 };

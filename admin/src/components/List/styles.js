@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const ListContainer = styled.div`
-  grid-area: listComponent;
+  grid-area: ${props => props.listGridArea};
   border-radius: ${props => props.theme.defaultBorderRadius};
-  height: 100%;
-  width: 100%;
+  height: ${props => props.height};
+  width: ${props => props.width};
   display: grid;
   grid-template-rows: 5rem 1fr;
   grid-template-areas:
@@ -15,7 +15,7 @@ export const ListContainer = styled.div`
 // Header
 export const ListHeaders = styled.div`
   grid-area: headers;
-  background: ${props => props.theme.primary}
+  background: ${props => props.theme.headers}
   border-radius: ${props => props.theme.defaultBorderRadius} ${props =>
   props.theme.defaultBorderRadius} 0 0;
   max-width: 100%;
@@ -28,11 +28,21 @@ export const ListHeaders = styled.div`
   :first-child {
     padding-left: 0.5rem;
   }
+
+  .list__withAddBtn {
+    flex: 0 1 5rem;
+    display: flex;
+
+    :hover {
+      color: green;
+    }
+  }
 `;
 
 export const HeaderItem = styled.p`
   flex: 1 1 5rem;
-  color: ${props => props.theme.headers}
+  /* color: ${props => props.theme.paragraphs} */
+  color: white;
   font-weight: 600;
   text-transform: uppercase;
   font-size: 1.2rem;
@@ -45,7 +55,7 @@ export const HeaderItem = styled.p`
 export const ProductList = styled.div`
   grid-area: products;
   /* padding-left: 0.5rem; */
-  background: ${props => props.theme.primary};
+  background: ${props => props.theme.headers};
   /* border: 1px solid cornflowerblue; */
   :first-child {
     padding-left: 0.5rem;

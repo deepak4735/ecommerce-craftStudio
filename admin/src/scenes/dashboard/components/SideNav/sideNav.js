@@ -57,7 +57,7 @@ const SideNav = () => {
         <SideNavigationElement justifyContent='center'>
           <div />
           <Book />
-          <Link to='/stock'>Configuration</Link>
+          <Link to='/product-types'>Product Types</Link>
         </SideNavigationElement>
       </Container>
       <Container placement='bottom'>

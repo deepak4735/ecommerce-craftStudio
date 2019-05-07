@@ -4,6 +4,8 @@ import { Switch, Route } from 'react-router-dom';
 // Import scenes
 import Home from '../../scenes/Home/index';
 import Products from '../../scenes/Products/index';
+import ProductTypes from '../../scenes/ProductTypes/index';
+import CreateProductType from '../../scenes/ProductTypes/scenes/createNewProductType';
 import CreateNewProduct from '../../scenes/Products/scenes/CreateProduct/createNewProduct';
 
 const Main = () => {
@@ -18,6 +20,12 @@ const Main = () => {
           component={CreateNewProduct}
         />
         <Route exaxt path='/categories' component={Home} />
+        <Route
+          exaxt
+          path='/product-types/create-product-type'
+          component={CreateProductType}
+        />
+        <Route exaxt path='/product-types' component={ProductTypes} />
         <Route exact path='/orders' component={Home} />
         <Route exact path='/stock' component={Home} />
       </Switch>
