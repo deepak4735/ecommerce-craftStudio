@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 // Import components
-import List from '../../../../../components/List/list';
+import List from '../components/List/list';
 
 // Import styles
 import {
