@@ -19,20 +19,34 @@ export const ListHeaders = styled.div`
   border-radius: ${props => props.theme.defaultBorderRadius} ${props =>
   props.theme.defaultBorderRadius} 0 0;
   max-width: 100%;
+  min-width: 100%;
   /* padding: 1rem; */
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   border-bottom: 0.3rem solid ${props => props.theme.accentTwo};
 
   :first-child {
     padding-left: 0.5rem;
   }
 
-  .list__withAddBtn {
-    flex: 0 1 5rem;
-    display: flex;
+  p:nth-child(1) {
+    width: 30%;
+  }
 
+  p:nth-child(2) {
+    width: 60%;
+  }
+
+  p:nth-child(3) {
+    width: 10%;
+  }
+
+  .list__withAddBtn {
+    display: flex;
+    justify-content: center;
+
+    a
     :hover {
       color: green;
     }
@@ -40,7 +54,6 @@ export const ListHeaders = styled.div`
 `;
 
 export const HeaderItem = styled.p`
-  flex: 1 1 5rem;
   /* color: ${props => props.theme.paragraphs} */
   color: white;
   font-weight: 600;
@@ -60,6 +73,10 @@ export const ProductList = styled.div`
   :first-child {
     padding-left: 0.5rem;
   }
+  min-height: 25rem;
+  max-height: 25rem;
+
+  overflow-y: scroll;
 
   border-radius: 0 0 ${props => props.theme.defaultBorderRadius}
     ${props => props.theme.defaultBorderRadius};

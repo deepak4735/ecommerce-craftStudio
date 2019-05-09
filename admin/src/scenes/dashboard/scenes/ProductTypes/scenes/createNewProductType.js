@@ -20,43 +20,68 @@ import { Container } from '../../../../../components/Container/Container';
 
 const CreateNewProdType = () => {
   const [state, setState] = useState({
-    hasVariants: false
+    typeName: '',
+    productAttributes: [],
+    variantAttributes: ['sfafsasafsa'],
+    hasVariants: false,
+    isShippingRequired: false
   });
+
+  const handleProductAttributes = payload => {
+    console.log(payload);
+    setState({
+      ...state,
+      productAttributes: [...state.productAttributes, payload]
+    });
+  };
 
   return (
     <CreateProductTypeContainer>
       <FormContainer>
         <TextAreaContainer>
           <Container flexDirection='column' height='7rem'>
-            <Label flexBasis='35%' htmlFor='name'>
-              Name
+            <Label flexBasis='35%' htmlFor='typeName'>
+              Type Name
             </Label>
             <Input
               inputPadding='0.5rem'
               width='80%'
               flexBasis='65%'
               type='text'
-              id='name'
+              id='typeName'
               placeholder='Enter the type name'
             />
           </Container>
           <Container flexDirection='column' margin='3rem 0 0 0'>
-            <Label flexBasis='35%' htmlFor='shipping'>
+            <Label flexBasis='35%' htmlFor='productAttributes'>
               Product attributes
             </Label>
             <List
+              handleProductAttributes={payload =>
+                handleProductAttributes(payload)
+              }
               height='100%'
               width='100%'
               headers={['Name', 'Values']}
               addBtn={true}
+              listItemArray={state.productAttributes}
             />
           </Container>
           {state.hasVariants && (
             <Container flexDirection='column' margin='3rem 0 0 0'>
-              <Label flexBasis='35%' htmlFor='shipping'>
+              <Label flexBasis='35%' htmlFor='VariantAttributes'>
                 Variant attributes
               </Label>
-              <List height='100%' width='100%' headers={['Name', 'Values']} />
+              <List
+                handleProductAttributes={payload =>
+                  handleProductAttributes(payload)
+                }
+                height='100%'
+                width='100%'
+                headers={['Name', 'Values']}
+                addBtn={true}
+                listItemArray={state.variantAttributes}
+              />
             </Container>
           )}
         </TextAreaContainer>
@@ -71,6 +96,9 @@ const CreateNewProdType = () => {
               type='checkbox'
               id='shipping'
               inputPadding='0rem'
+              onChange={() =>
+                setState({ isShippingRequired: !state.isShippingRequired })
+              }
             />
           </Container>
           <Container flexDirection='column' height='7rem' margin='3rem 0 0 0'>

@@ -5,13 +5,13 @@ import AddCircle from '@material-ui/icons/AddCircle';
 import { ListContainer, ListHeaders, ProductList, HeaderItem } from './styles';
 
 // Import components
-import ListItem from './components/listItem';
+import ListItem from './components/ListItem/listItem';
+import Form from './components/Form/form';
 import Toggle from '../../../../../../components/Toggle/Toggle';
 import Modal from '../../../../../../components/Modal/Modal';
 
 const ListComponent = props => {
   const { headers, listItemArray, width, height, addBtn } = props;
-  console.log(props);
   return (
     <ListContainer width={width} height={height}>
       <ListHeaders>
@@ -27,15 +27,13 @@ const ListComponent = props => {
                 </HeaderItem>
                 {on && (
                   <Modal toggle={toggle} on={on}>
-                    <div
-                      style={{
-                        width: '20rem',
-                        height: '20rem',
-                        background: 'black'
-                      }}
-                    >
-                      <p>Hello</p>
-                    </div>
+                    <Form
+                      toggle={toggle}
+                      on={on}
+                      handleProductAttributes={payload =>
+                        props.handleProductAttributes(payload)
+                      }
+                    />
                   </Modal>
                 )}
               </>
@@ -44,10 +42,9 @@ const ListComponent = props => {
         )}
       </ListHeaders>
       <ProductList>
-        <ListItem addBtn />
-        <ListItem addBtn />
-        <ListItem addBtn />
-        <ListItem addBtn />
+        {listItemArray !== undefined
+          ? listItemArray.map(listItem => <ListItem data={listItem} />)
+          : ''}
       </ProductList>
     </ListContainer>
   );
