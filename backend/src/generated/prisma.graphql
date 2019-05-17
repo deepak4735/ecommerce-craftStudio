@@ -1,5 +1,5 @@
 # source: https://eu1.prisma.sh/morten-vistisen-de8af9/craftstudio/dev
-# timestamp: Thu May 02 2019 21:47:26 GMT+0200 (Central European Summer Time)
+# timestamp: Fri May 17 2019 14:27:10 GMT+0200 (Central European Summer Time)
 
 type AggregateAttribute {
   count: Int!
@@ -57,8 +57,8 @@ type Attribute implements Node {
   id: ID!
   productType: ProductType
   productVariantType: ProductType
-  name: String
-  values(where: AttributeValueWhereInput, orderBy: AttributeValueOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [AttributeValue!]
+  attributeName: String
+  attributeValues(where: AttributeValueWhereInput, orderBy: AttributeValueOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [AttributeValue!]
 }
 
 """A connection to a list of items."""
@@ -73,10 +73,10 @@ type AttributeConnection {
 
 input AttributeCreateInput {
   id: ID
-  name: String
+  attributeName: String
   productType: ProductTypeCreateOneWithoutProductAttributesInput
   productVariantType: ProductTypeCreateOneWithoutVariantAttributesInput
-  values: AttributeValueCreateManyInput
+  attributeValues: AttributeValueCreateManyInput
 }
 
 input AttributeCreateManyWithoutProductTypeInput {
@@ -91,16 +91,16 @@ input AttributeCreateManyWithoutProductVariantTypeInput {
 
 input AttributeCreateWithoutProductTypeInput {
   id: ID
-  name: String
+  attributeName: String
   productVariantType: ProductTypeCreateOneWithoutVariantAttributesInput
-  values: AttributeValueCreateManyInput
+  attributeValues: AttributeValueCreateManyInput
 }
 
 input AttributeCreateWithoutProductVariantTypeInput {
   id: ID
-  name: String
+  attributeName: String
   productType: ProductTypeCreateOneWithoutProductAttributesInput
-  values: AttributeValueCreateManyInput
+  attributeValues: AttributeValueCreateManyInput
 }
 
 """An edge in a connection."""
@@ -115,13 +115,13 @@ type AttributeEdge {
 enum AttributeOrderByInput {
   id_ASC
   id_DESC
-  name_ASC
-  name_DESC
+  attributeName_ASC
+  attributeName_DESC
 }
 
 type AttributePreviousValues {
   id: ID!
-  name: String
+  attributeName: String
 }
 
 input AttributeScalarWhereInput {
@@ -173,46 +173,46 @@ input AttributeScalarWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
-  name: String
+  attributeName: String
 
   """All values that are not equal to given value."""
-  name_not: String
+  attributeName_not: String
 
   """All values that are contained in given list."""
-  name_in: [String!]
+  attributeName_in: [String!]
 
   """All values that are not contained in given list."""
-  name_not_in: [String!]
+  attributeName_not_in: [String!]
 
   """All values less than the given value."""
-  name_lt: String
+  attributeName_lt: String
 
   """All values less than or equal the given value."""
-  name_lte: String
+  attributeName_lte: String
 
   """All values greater than the given value."""
-  name_gt: String
+  attributeName_gt: String
 
   """All values greater than or equal the given value."""
-  name_gte: String
+  attributeName_gte: String
 
   """All values containing the given string."""
-  name_contains: String
+  attributeName_contains: String
 
   """All values not containing the given string."""
-  name_not_contains: String
+  attributeName_not_contains: String
 
   """All values starting with the given string."""
-  name_starts_with: String
+  attributeName_starts_with: String
 
   """All values not starting with the given string."""
-  name_not_starts_with: String
+  attributeName_not_starts_with: String
 
   """All values ending with the given string."""
-  name_ends_with: String
+  attributeName_ends_with: String
 
   """All values not ending with the given string."""
-  name_not_ends_with: String
+  attributeName_not_ends_with: String
 }
 
 type AttributeSubscriptionPayload {
@@ -253,18 +253,18 @@ input AttributeSubscriptionWhereInput {
 }
 
 input AttributeUpdateInput {
-  name: String
+  attributeName: String
   productType: ProductTypeUpdateOneWithoutProductAttributesInput
   productVariantType: ProductTypeUpdateOneWithoutVariantAttributesInput
-  values: AttributeValueUpdateManyInput
+  attributeValues: AttributeValueUpdateManyInput
 }
 
 input AttributeUpdateManyDataInput {
-  name: String
+  attributeName: String
 }
 
 input AttributeUpdateManyMutationInput {
-  name: String
+  attributeName: String
 }
 
 input AttributeUpdateManyWithoutProductTypeInput {
@@ -297,15 +297,15 @@ input AttributeUpdateManyWithWhereNestedInput {
 }
 
 input AttributeUpdateWithoutProductTypeDataInput {
-  name: String
+  attributeName: String
   productVariantType: ProductTypeUpdateOneWithoutVariantAttributesInput
-  values: AttributeValueUpdateManyInput
+  attributeValues: AttributeValueUpdateManyInput
 }
 
 input AttributeUpdateWithoutProductVariantTypeDataInput {
-  name: String
+  attributeName: String
   productType: ProductTypeUpdateOneWithoutProductAttributesInput
-  values: AttributeValueUpdateManyInput
+  attributeValues: AttributeValueUpdateManyInput
 }
 
 input AttributeUpdateWithWhereUniqueWithoutProductTypeInput {
@@ -692,51 +692,51 @@ input AttributeWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
-  name: String
+  attributeName: String
 
   """All values that are not equal to given value."""
-  name_not: String
+  attributeName_not: String
 
   """All values that are contained in given list."""
-  name_in: [String!]
+  attributeName_in: [String!]
 
   """All values that are not contained in given list."""
-  name_not_in: [String!]
+  attributeName_not_in: [String!]
 
   """All values less than the given value."""
-  name_lt: String
+  attributeName_lt: String
 
   """All values less than or equal the given value."""
-  name_lte: String
+  attributeName_lte: String
 
   """All values greater than the given value."""
-  name_gt: String
+  attributeName_gt: String
 
   """All values greater than or equal the given value."""
-  name_gte: String
+  attributeName_gte: String
 
   """All values containing the given string."""
-  name_contains: String
+  attributeName_contains: String
 
   """All values not containing the given string."""
-  name_not_contains: String
+  attributeName_not_contains: String
 
   """All values starting with the given string."""
-  name_starts_with: String
+  attributeName_starts_with: String
 
   """All values not starting with the given string."""
-  name_not_starts_with: String
+  attributeName_not_starts_with: String
 
   """All values ending with the given string."""
-  name_ends_with: String
+  attributeName_ends_with: String
 
   """All values not ending with the given string."""
-  name_not_ends_with: String
+  attributeName_not_ends_with: String
   productType: ProductTypeWhereInput
   productVariantType: ProductTypeWhereInput
-  values_every: AttributeValueWhereInput
-  values_some: AttributeValueWhereInput
-  values_none: AttributeValueWhereInput
+  attributeValues_every: AttributeValueWhereInput
+  attributeValues_some: AttributeValueWhereInput
+  attributeValues_none: AttributeValueWhereInput
 }
 
 input AttributeWhereUniqueInput {
@@ -2447,7 +2447,7 @@ type ProductType implements Node {
   shippingRequired: Boolean!
   weight: Weight
   taxes: Tax
-  hasVariants: Boolean!
+  hasVariants: Boolean
   productAttributes(where: AttributeWhereInput, orderBy: AttributeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Attribute!]
   variantAttributes(where: AttributeWhereInput, orderBy: AttributeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Attribute!]
 }
@@ -2532,7 +2532,7 @@ type ProductTypePreviousValues {
   id: ID!
   name: String!
   shippingRequired: Boolean!
-  hasVariants: Boolean!
+  hasVariants: Boolean
 }
 
 type ProductTypeSubscriptionPayload {

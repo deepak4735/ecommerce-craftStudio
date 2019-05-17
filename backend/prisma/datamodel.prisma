@@ -70,7 +70,7 @@ type ProductType {
   shippingRequired: Boolean! @default(value: true)
   weight: Weight
   taxes: Tax
-  hasVariants: Boolean! @default(value: false)
+  hasVariants: Boolean @default(value: false)
   productAttributes: [Attribute]
     @relation(name: "ProductAttributes", onDelete: CASCADE)
   variantAttributes: [Attribute]
@@ -83,9 +83,9 @@ type Attribute {
     @relation(name: "ProductAttributes", onDelete: CASCADE)
   productVariantType: ProductType
     @relation(name: "VariantAttributes", onDelete: CASCADE)
-  name: String
+  attributeName: String
   # slug: String
-  values: [AttributeValue]
+  attributeValues: [AttributeValue!]!
 }
 
 type AttributeValue {

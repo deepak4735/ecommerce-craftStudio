@@ -30,8 +30,8 @@ const ListComponent = props => {
                     <Form
                       toggle={toggle}
                       on={on}
-                      handleProductAttributes={payload =>
-                        props.handleProductAttributes(payload)
+                      handleAttributes={payload =>
+                        props.handleAttributes(payload)
                       }
                     />
                   </Modal>

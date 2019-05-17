@@ -9,6 +9,7 @@ export const Container = styled.div`
   width: ${props => props.width};
   height: ${props => props.height};
   margin: ${props => props.margin};
+  flex-wrap: ${props => props.wrap};
 
   h2 {
     color: ${props => props.theme.headers};

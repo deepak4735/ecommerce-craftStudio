@@ -34,6 +34,16 @@ type Mutation {
     available: Boolean
   ): Product
   createCategory(name: String!, slug: String!, description: String!): Category
+  createProductType(
+    id: ID
+    name: String!
+    shippingRequired: Boolean
+    hasVariants: Boolean
+    weight: WeightCreateOneInput
+    taxes: TaxCreateOneInput
+    productAttributes: AttributeCreateManyWithoutProductTypeInput
+    variantAttributes: AttributeCreateManyWithoutProductVariantTypeInput
+  ): ProductType
 }
 
 # ProductImageCreateManyWithoutProductInput
@@ -44,6 +54,8 @@ type Query {
   currentUser: User
   products: [Product]!
   productImages: [ProductImage]
+  productTypes: [ProductType]
+  productType(where: ProductTypeWhereUniqueInput): ProductType
 }
 
 type User {

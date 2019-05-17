@@ -189,6 +189,22 @@ const Mutations = {
     });
 
     return category;
+  },
+  async createProductType(parent, args, ctx, info) {
+    // if (!ctx.request.userId) {
+    //   throw new Error('You must be logged in to do that');
+    // }
+
+    console.log(args);
+
+    const productType = await ctx.db.mutation.createProductType({
+      data: {
+        ...args
+      },
+      info
+    });
+
+    return productType;
   }
 };
 

@@ -23,10 +23,9 @@ const ListComponent = props => {
         )}
       </ListHeaders>
       <ProductList>
-        <ListItem addBtn />
-        <ListItem addBtn />
-        <ListItem addBtn />
-        <ListItem addBtn />
+        {listItemArray.productTypes.map(listItem => (
+          <ListItem data={listItem} />
+        ))}
       </ProductList>
     </ListContainer>
   );
