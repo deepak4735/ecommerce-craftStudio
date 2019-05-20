@@ -205,6 +205,23 @@ const Mutations = {
     });
 
     return productType;
+  },
+  async createProductTypeAttribute(parent, args, ctx, info) {
+    // if (!ctx.request.userId) {
+    //   throw new Error('You must be logged in to do that');
+    // }
+
+    console.log(args);
+
+    const attribute = await ctx.db.mutation.createAttribute({
+      data: {
+        ...args,
+        productType: args.productType
+      },
+      info
+    });
+
+    return attribute;
   }
 };
 
