@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
-import { useSpring, animated } from 'react-spring';
+import { useSpring } from 'react-spring';
+import { Mutation } from 'react-apollo';
+import { Close } from '@material-ui/icons';
 
 // Import styles
-import { FormContainer, AttributeValue } from './styles';
+import { FormContainer, AttributeValue, FormHeader } from './styles';
 import {
   Label,
   Input
 } from '../../../../../../../../components/FormElements/formElements';
 import { Container } from '../../../../../../../../components/Container/Container';
+
+// Import graphql
+import { ADD_PRODUCT_ATTRIBUTES } from './graphql';
 
 const Form = props => {
   const [state, setState] = useState({
@@ -29,59 +34,87 @@ const Form = props => {
   };
 
   const addAttributeValue = e => {
+    e.preventDefault();
     let attrValue = state.attributeValue;
 
     setState({
       ...state,
       attributeValue: '',
-      attributeValues: [...state.attributeValues, attrValue]
+      attributeValues: [...state.attributeValues, { value: attrValue }]
     });
   };
 
-  const addProductVariant = () => {
-    let payload = {
-      attributeName: state.attributeName,
-      attributeValues: [...state.attributeValues]
-    };
-    props.handleAttributes(payload);
-    setState({
-      attributeName: '',
-      attributeValue: '',
-      attributeValues: []
-    });
-    props.toggle();
+  const { productTypeId } = props;
+  const { attributeName, attributeValues } = state;
+  const productType = {
+    id: productTypeId
   };
-
+  console.log(state);
   return (
-    <FormContainer style={animateProps}>
-      <Container flexDirection='column' height='25%'>
-        <Label htmlfor='attributeName'>Attribute name</Label>
-        <Input
-          id='attributeName'
-          value={state.attributeName}
-          onChange={e => handleAttribute(e)}
-        />
-      </Container>
-      <Container flexDirection='column' height='25%'>
-        <Label htmlfor='attributeValue'>Attribute value</Label>
-        <Input
-          value={state.attributeValue}
-          id='attributeValue'
-          onChange={e => handleAttribute(e)}
-        />
-        <button id='submit' onClick={e => addAttributeValue(e)}>
-          Add value
-        </button>
-      </Container>
-      <Container height='50%' wrap='wrap'>
-        {state.attributeValues.map((el, i) => (
-          <AttributeValue key={i} id={i}>
-            {el}
-          </AttributeValue>
-        ))}
-      </Container>
-      <button onClick={() => addProductVariant()}>Add product attribute</button>
-    </FormContainer>
+    <Mutation
+      mutation={ADD_PRODUCT_ATTRIBUTES}
+      variables={{ attributeName, attributeValues, productType }}
+    >
+      {(createProductTypeAttribute, { loading, error }) => (
+        <FormContainer
+          style={animateProps}
+          onSubmit={async e => {
+            e.preventDefault();
+            const res = await createProductTypeAttribute();
+            console.log(res);
+          }}
+        >
+          <Container
+            flexDirection='row'
+            height='15%'
+            alignmentJustify='space-between'
+            alignmentAlign='center'
+          >
+            <FormHeader style={{ margin: '0' }}>
+              Define product Attribute
+            </FormHeader>
+            <Close onClick={() => props.toggle()} />
+          </Container>
+          <Container flexDirection='column' height='25%'>
+            <Label htmlfor='attributeName'>Attribute name</Label>
+            <Input
+              flexBasis='4rem'
+              id='attributeName'
+              value={state.attributeName}
+              onChange={e => handleAttribute(e)}
+            />
+          </Container>
+          <Container
+            flexDirection='row'
+            height='20%'
+            alignmentJustify='space-between'
+            alignmentAlign='center'
+          >
+            <Container flexDirection='column'>
+              <Label htmlfor='attributeValue'>Attribute value</Label>
+              <Input
+                flexBasis='4rem'
+                value={state.attributeValue}
+                id='attributeValue'
+                onChange={e => handleAttribute(e)}
+              />
+            </Container>
+
+            <button id='submit' onClick={e => addAttributeValue(e)}>
+              Add value
+            </button>
+          </Container>
+          <Container height='30%' wrap='wrap' background='white'>
+            {state.attributeValues.map((el, i) => (
+              <AttributeValue key={i} id={i}>
+                {el.value}
+              </AttributeValue>
+            ))}
+          </Container>
+          <button>Add product attribute</button>
+        </FormContainer>
+      )}
+    </Mutation>
   );
 };
 

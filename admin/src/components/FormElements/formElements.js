@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Label = styled.label`
   flex: 0 1 ${props => props.flexBasis};
   color: ${props => props.theme.headers};
+  opacity: 75%;
   font-size: 1.5rem;
   min-width: 20rem;
 `;

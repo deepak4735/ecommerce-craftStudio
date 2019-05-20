@@ -1,4 +1,4 @@
-import { httpLink } from './httpLink';
+// import { httpLink } from './httpLink';
 import ApolloClient from 'apollo-boost';
 
 // export const client = new ApolloClient({

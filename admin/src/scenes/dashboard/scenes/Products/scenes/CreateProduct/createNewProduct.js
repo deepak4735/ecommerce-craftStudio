@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { withRouter, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 // import ImageGallery from 'react-image-gallery';
-import { Mutation } from 'react-apollo';
-import gql from 'graphql-tag';
+// import { Mutation } from 'react-apollo';
+// import gql from 'graphql-tag';
 
 // Import icons
-import AddAPhoto from '@material-ui/icons/AddAPhoto';
+// import AddAPhoto from '@material-ui/icons/AddAPhoto';
 
 import 'react-image-gallery/styles/css/image-gallery.css';
 
@@ -28,35 +28,35 @@ import {
 } from './styles';
 
 // GraphQL Mutation
-const CREATE_PRODUCT_MUTATION = gql`
-  mutation CREATE_PRODUCT_MUTATION(
-    $title: String!
-    $description: String!
-    $price: Int!
-    $available: Boolean!
-    $productImages: [ProductImageCreateWithoutProductInput!]
-  ) {
-    createProduct(
-      title: $title
-      description: $description
-      price: $price
-      available: $available
-      productImages: { create: $productImages }
-    ) {
-      id
-      title
-      description
-      price
-      available
-      productImages {
-        title
-        product {
-          title
-        }
-      }
-    }
-  }
-`;
+// const CREATE_PRODUCT_MUTATION = gql`
+//   mutation CREATE_PRODUCT_MUTATION(
+//     $title: String!
+//     $description: String!
+//     $price: Int!
+//     $available: Boolean!
+//     $productImages: [ProductImageCreateWithoutProductInput!]
+//   ) {
+//     createProduct(
+//       title: $title
+//       description: $description
+//       price: $price
+//       available: $available
+//       productImages: { create: $productImages }
+//     ) {
+//       id
+//       title
+//       description
+//       price
+//       available
+//       productImages {
+//         title
+//         product {
+//           title
+//         }
+//       }
+//     }
+//   }
+// `;
 
 class CreateNewProduct extends Component {
   state = {
@@ -123,10 +123,10 @@ class CreateNewProduct extends Component {
   };
   render() {
     const {
-      title,
-      description,
-      price,
-      available,
+      // title,
+      // description,
+      // price,
+      // available,
       productImages,
       currStep,
       totalSteps

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Mutation } from 'react-apollo';
 
 // Import components
-import List from '../../components/List/list';
+// import List from '../../components/List/list';
 
 // Import mutation
 import { CREATE_PRODUCT_TYPE } from './newProductMutation';
@@ -39,12 +39,12 @@ const CreateNewProdType = () => {
     }
   });
 
-  const handleAttributes = payload => {
-    setState({
-      ...state,
-      productAttributes: [...state.productAttributes, payload]
-    });
-  };
+  // const handleAttributes = payload => {
+  //   setState({
+  //     ...state,
+  //     productAttributes: [...state.productAttributes, payload]
+  //   });
+  // };
 
   const handleInputs = e => {
     const id = e.target.id;
@@ -72,7 +72,7 @@ const CreateNewProdType = () => {
   };
 
   const { typeName, shippingRequired, weight, tax } = state;
-  // console.log(productAttributes);
+
   return (
     <Mutation
       mutation={CREATE_PRODUCT_TYPE}

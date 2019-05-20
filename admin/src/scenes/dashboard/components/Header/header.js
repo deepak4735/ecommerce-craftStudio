@@ -1,12 +1,12 @@
 import React from 'react';
-import Search from '@material-ui/icons/Search';
+// import Search from '@material-ui/icons/Search';
 
 // Import styles
-import { HeaderContainer, UserInfoContainer, SearchContainer } from './styles';
+import { HeaderContainer, UserInfoContainer } from './styles';
 
 // Import components
-import User from '../../../../components/User/user';
-import SignOut from './components/signOut';
+// import User from '../../../../components/User/user';
+// import SignOut from './components/signOut';
 
 const Header = () => {
   return (

@@ -12,6 +12,7 @@ import Modal from '../../../../../../components/Modal/Modal';
 
 const ListComponent = props => {
   const { headers, listItemArray, width, height, addBtn } = props;
+  console.log(props);
   return (
     <ListContainer width={width} height={height}>
       <ListHeaders>
@@ -28,6 +29,7 @@ const ListComponent = props => {
                 {on && (
                   <Modal toggle={toggle} on={on}>
                     <Form
+                      productTypeId={props.productId}
                       toggle={toggle}
                       on={on}
                       handleAttributes={payload =>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Query, Mutation } from 'react-apollo';
+import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 
 // Import components
@@ -43,13 +43,13 @@ const ALL_PRODUCTS_QUERY = gql`
   }
 `;
 
-const DELETE_PRODUCT_MUTATION = gql`
-  mutation DELETE_PRODUCT_MUTATION($id: ID!) {
-    deleteProduct(id: $id) {
-      id
-    }
-  }
-`;
+// const DELETE_PRODUCT_MUTATION = gql`
+//   mutation DELETE_PRODUCT_MUTATION($id: ID!) {
+//     deleteProduct(id: $id) {
+//       id
+//     }
+//   }
+// `;
 
 class Products extends Component {
   update = (cache, payload) => {
