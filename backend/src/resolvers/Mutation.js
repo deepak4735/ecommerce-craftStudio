@@ -222,6 +222,25 @@ const Mutations = {
     });
 
     return attribute;
+  },
+  async updateProductTypeAttribute(parent, args, ctx, info) {
+    // if (!ctx.request.userId) {
+    //   throw new Error('You must be logged in to do that');
+    // }
+
+    const updatedAttribute = await ctx.db.mutation.updateAttribute({
+      data: {
+        ...args
+      },
+      where: {
+        connect: {
+          id: args.id
+        }
+      },
+      info
+    });
+
+    return updatedAttribute;
   }
 };
 

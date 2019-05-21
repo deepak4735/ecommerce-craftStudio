@@ -50,6 +50,13 @@ type Mutation {
     productType: ProductTypeCreateOneWithoutProductAttributesInput
     attributeValues: AttributeValueCreateManyInput
   ): Attribute
+  updateProductTypeAttribute(
+    id: ID
+    attributeName: String
+    productType: ProductTypeUpdateOneWithoutProductAttributesInput
+    productVariantType: ProductTypeUpdateOneWithoutVariantAttributesInput
+    attributeValues: AttributeValueUpdateManyInput
+  ): Attribute
 }
 
 # ProductImageCreateManyWithoutProductInput
