@@ -18,3 +18,24 @@ export const ADD_PRODUCT_ATTRIBUTES = gql`
     }
   }
 `;
+
+export const UPDATE_PRODUCT_ATTRIBUTES = gql`
+  mutation UPDATE_PRODUCT_ATTRIBUTES(
+    $id: ID
+    $attributeName: String!
+    $productType: ProductTypeWhereUniqueInput
+    $attributeValues: [AttributeValueCreateInput!]
+  ) {
+    updateProductTypeAttribute(
+      id: $id
+      attributeName: $attributeName
+      productType: { connect: $productType }
+      attributeValues: { create: $attributeValues }
+    ) {
+      attributeName
+      productType {
+        name
+      }
+    }
+  }
+`;

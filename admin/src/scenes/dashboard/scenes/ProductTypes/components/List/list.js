@@ -29,9 +29,15 @@ const ListComponent = props => {
                 {on && (
                   <Modal toggle={toggle} on={on}>
                     <Form
+                      attributeType={props.attributeType}
                       productTypeId={props.productId}
                       toggle={toggle}
                       on={on}
+                      editAttribute={false}
+                      mutation={{
+                        name: 'add',
+                        func: 'createProductTypeAttribute'
+                      }}
                       handleAttributes={payload =>
                         props.handleAttributes(payload)
                       }

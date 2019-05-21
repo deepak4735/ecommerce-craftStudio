@@ -5,14 +5,17 @@ export const ProductTypeContainer = styled.div`
   background: ${props => props.theme.secondary};
   padding: ${props => props.theme.defaultPadding};
   padding-top: 0;
-  overflow-y: scroll;
+  height: 100%;
 `;
 
 export const FormContainer = styled.form`
   display: grid;
+  height: 100%;
   grid-template-columns: 60% 40%;
-  grid-template-rows: auto;
-  grid-template-areas: 'leftArea rightArea';
+  grid-template-rows: 100%;
+  grid-template-areas:
+    'leftArea rightArea'
+    'leftArea btn';
 `;
 export const LeftAreaContainer = styled.div`
   grid-area: leftArea;
@@ -24,4 +27,11 @@ export const RightAreaContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+export const SubmitOrDelete = styled.div`
+  grid-area: btn;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 `;

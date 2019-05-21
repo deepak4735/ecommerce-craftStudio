@@ -10,7 +10,8 @@ import {
   ProductTypeContainer,
   LeftAreaContainer,
   RightAreaContainer,
-  FormContainer
+  FormContainer,
+  SubmitOrDelete
 } from '../components/styles';
 
 import {
@@ -109,6 +110,7 @@ const EditProductType = props => {
                       // handleAttributes={payload => handleAttributes(payload)}
                       height='100%'
                       width='100%'
+                      attributeType='product'
                       headers={['Name', 'Values']}
                       addBtn={true}
                       productId={id}
@@ -123,10 +125,11 @@ const EditProductType = props => {
                       <List
                         // handleAttributes={payload => handleAttributes(payload)}
                         height='100%'
+                        attributeType='variant'
                         width='100%'
                         headers={['Name', 'Values']}
                         addBtn={true}
-                        listItemArray={data.productType.productAttributes}
+                        listItemArray={data.productType.variantAttributes}
                       />
                     </Container>
                   )}
@@ -253,7 +256,10 @@ const EditProductType = props => {
                     </Container>
                   </Container>
                 </RightAreaContainer>
-                <button>Submit</button>
+                <SubmitOrDelete>
+                  <button>Delete</button>
+                  <button>Submit</button>
+                </SubmitOrDelete>
               </FormContainer>
             </ProductTypeContainer>
           );

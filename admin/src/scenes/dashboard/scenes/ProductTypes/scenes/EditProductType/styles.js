@@ -5,5 +5,4 @@ export const EditProductTypeContainer = styled.div`
   background: ${props => props.theme.secondary};
   padding: ${props => props.theme.defaultPadding};
   padding-top: 0;
-  /* overflow-y: scroll; */
 `;

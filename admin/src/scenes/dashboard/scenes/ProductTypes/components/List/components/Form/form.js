@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSpring } from 'react-spring';
 import { Mutation } from 'react-apollo';
 import { Close } from '@material-ui/icons';
@@ -12,7 +12,7 @@ import {
 import { Container } from '../../../../../../../../components/Container/Container';
 
 // Import graphql
-import { ADD_PRODUCT_ATTRIBUTES } from './graphql';
+import { ADD_PRODUCT_ATTRIBUTES, UPDATE_PRODUCT_ATTRIBUTES } from './graphql';
 
 const Form = props => {
   const [state, setState] = useState({
@@ -20,6 +20,15 @@ const Form = props => {
     attributeValue: '',
     attributeValues: []
   });
+
+  if (props.editAttribute === true) {
+    useEffect(() => {
+      setState({
+        attributeName: props.data.attributeName,
+        attributeValues: props.data.attributeValues
+      });
+    }, [props.toggle]);
+  }
 
   const animateProps = useSpring({ top: `${25}%`, from: { top: `${0}%` } });
 
@@ -49,18 +58,23 @@ const Form = props => {
   const productType = {
     id: productTypeId
   };
-  console.log(state);
+
+  const { name, func } = props.mutation;
+  console.log(props);
+
   return (
     <Mutation
-      mutation={ADD_PRODUCT_ATTRIBUTES}
+      mutation={
+        name === 'update' ? UPDATE_PRODUCT_ATTRIBUTES : ADD_PRODUCT_ATTRIBUTES
+      }
       variables={{ attributeName, attributeValues, productType }}
     >
-      {(createProductTypeAttribute, { loading, error }) => (
+      {(func, { loading, error }) => (
         <FormContainer
           style={animateProps}
           onSubmit={async e => {
             e.preventDefault();
-            const res = await createProductTypeAttribute();
+            const res = await func();
             console.log(res);
           }}
         >
@@ -71,7 +85,7 @@ const Form = props => {
             alignmentAlign='center'
           >
             <FormHeader style={{ margin: '0' }}>
-              Define product Attribute
+              Define {props.attributeType} attribute
             </FormHeader>
             <Close onClick={() => props.toggle()} />
           </Container>

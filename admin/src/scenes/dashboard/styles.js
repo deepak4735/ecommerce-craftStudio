@@ -8,5 +8,6 @@ export const DashboardContainer = styled.div`
     'sidenav header'
     'sidenav main';
   height: 100vh;
-  overflow: hidden;
+  max-height: 100vh;
+  overflow-y: scroll;
 `;
