@@ -22,7 +22,9 @@ const Query = {
 
   productTypes: forwardTo('db'),
 
-  productType: forwardTo('db')
+  productType: forwardTo('db'),
+
+  attributes: forwardTo('db')
 };
 
 module.exports = Query;

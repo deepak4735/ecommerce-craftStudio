@@ -79,10 +79,8 @@ type ProductType {
 
 type Attribute {
   id: ID! @id
-  productType: ProductType
-    @relation(name: "ProductAttributes", onDelete: CASCADE)
-  productVariantType: ProductType
-    @relation(name: "VariantAttributes", onDelete: CASCADE)
+  productType: ProductType @relation(name: "ProductAttributes")
+  productVariantType: ProductType @relation(name: "VariantAttributes")
   attributeName: String
   # slug: String
   attributeValues: [AttributeValue!]!

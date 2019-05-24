@@ -3,6 +3,9 @@ import { useSpring } from 'react-spring';
 import { Mutation } from 'react-apollo';
 import { Close } from '@material-ui/icons';
 
+// Import components
+import DeleteButton from './components/deleteBtn';
+
 // Import styles
 import { FormContainer, AttributeValue, FormHeader } from './styles';
 import {
@@ -54,20 +57,32 @@ const Form = props => {
   };
 
   const { productTypeId } = props;
-  const { attributeName, attributeValues } = state;
+  const { attributeName } = state;
   const productType = {
     id: productTypeId
   };
 
+  const id = props.id;
+
   const { name, func } = props.mutation;
-  console.log(props);
+
+  // let attributeValues = state.attributeValues.filter(
+  //   el => el.id !== typeof String
+  // );
+
+  let attributeValues = state.attributeValues.filter(el => !el.id);
 
   return (
     <Mutation
       mutation={
         name === 'update' ? UPDATE_PRODUCT_ATTRIBUTES : ADD_PRODUCT_ATTRIBUTES
       }
-      variables={{ attributeName, attributeValues, productType }}
+      variables={{
+        attributeName,
+        attributeValues,
+        productType,
+        id
+      }}
     >
       {(func, { loading, error }) => (
         <FormContainer
@@ -125,7 +140,10 @@ const Form = props => {
               </AttributeValue>
             ))}
           </Container>
-          <button>Add product attribute</button>
+          <button>
+            {name === 'update' ? 'Update' : 'Add'} product attribute
+          </button>
+          {name === 'update' ? <DeleteButton id={id} /> : null}
         </FormContainer>
       )}
     </Mutation>

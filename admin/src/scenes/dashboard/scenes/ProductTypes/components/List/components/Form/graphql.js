@@ -23,19 +23,25 @@ export const UPDATE_PRODUCT_ATTRIBUTES = gql`
   mutation UPDATE_PRODUCT_ATTRIBUTES(
     $id: ID
     $attributeName: String!
-    $productType: ProductTypeWhereUniqueInput
     $attributeValues: [AttributeValueCreateInput!]
   ) {
     updateProductTypeAttribute(
       id: $id
       attributeName: $attributeName
-      productType: { connect: $productType }
       attributeValues: { create: $attributeValues }
     ) {
       attributeName
       productType {
         name
       }
+    }
+  }
+`;
+
+export const DELETE_PRODUCT_ATTRIBUTE = gql`
+  mutation DELETE_PRODUCT_ATTRIBUTE($id: ID) {
+    deleteAttribute(id: $id) {
+      attributeName
     }
   }
 `;

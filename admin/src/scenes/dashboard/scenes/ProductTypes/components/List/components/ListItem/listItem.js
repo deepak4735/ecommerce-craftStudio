@@ -19,13 +19,14 @@ const ListItem = props => {
             <ItemName>{attributeName}</ItemName>
             <Section>
               {attributeValues.map((el, i) => (
-                <ItemValue key={i.id}>{el.value}, </ItemValue>
+                <ItemValue key={el.id}>{el.value}, </ItemValue>
               ))}
             </Section>
           </ListItemContainer>
           {on && (
             <Modal toggle={toggle} on={on}>
               <Form
+                id={props.data.id}
                 attributeType={props.attributeType}
                 productTypeId={props.productId}
                 toggle={toggle}

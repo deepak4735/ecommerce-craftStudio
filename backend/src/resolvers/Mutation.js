@@ -206,6 +206,29 @@ const Mutations = {
 
     return productType;
   },
+  async updateProductType(parent, args, ctx, info) {
+    // if (!ctx.request.userId) {
+    //   throw new Error('You must be logged in to do that');
+    // }
+
+    console.log(args);
+
+    const updateProductType = await ctx.db.mutation.updateProductType({
+      data: {
+        name: args.name,
+        shippingRequired: args.shippingRequired,
+        hasVariants: args.hasVariants,
+        weight: args.weight,
+        taxes: args.taxes
+      },
+      where: {
+        id: args.id
+      },
+      info
+    });
+
+    return updateProductType;
+  },
   async createProductTypeAttribute(parent, args, ctx, info) {
     // if (!ctx.request.userId) {
     //   throw new Error('You must be logged in to do that');
@@ -223,24 +246,39 @@ const Mutations = {
 
     return attribute;
   },
+
   async updateProductTypeAttribute(parent, args, ctx, info) {
     // if (!ctx.request.userId) {
     //   throw new Error('You must be logged in to do that');
     // }
 
+    console.log(args.attributeValues);
+
     const updatedAttribute = await ctx.db.mutation.updateAttribute({
       data: {
-        ...args
+        attributeName: args.attributeName,
+        attributeValues: args.attributeValues
       },
       where: {
-        connect: {
-          id: args.id
-        }
+        id: args.id
       },
       info
     });
 
     return updatedAttribute;
+  },
+  async deleteAttribute(parent, args, ctx, info) {
+    console.log(args.id);
+    const deleteAttribute = await ctx.db.mutation.deleteAttribute(
+      {
+        where: {
+          id: args.id
+        }
+      },
+      info
+    );
+
+    return deleteAttribute;
   }
 };
 

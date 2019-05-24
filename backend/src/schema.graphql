@@ -44,6 +44,14 @@ type Mutation {
     productAttributes: AttributeCreateManyWithoutProductTypeInput
     variantAttributes: AttributeCreateManyWithoutProductVariantTypeInput
   ): ProductType
+  updateProductType(
+    id: ID
+    name: String
+    shippingRequired: Boolean
+    hasVariants: Boolean
+    weight: WeightUpdateOneInput
+    taxes: TaxUpdateOneInput
+  ): ProductType
   createProductTypeAttribute(
     id: ID
     attributeName: String!
@@ -51,12 +59,15 @@ type Mutation {
     attributeValues: AttributeValueCreateManyInput
   ): Attribute
   updateProductTypeAttribute(
+    # data: AttributeUpdateInput
+    # where: AttributeWhereUniqueInput
     id: ID
     attributeName: String
     productType: ProductTypeUpdateOneWithoutProductAttributesInput
     productVariantType: ProductTypeUpdateOneWithoutVariantAttributesInput
     attributeValues: AttributeValueUpdateManyInput
   ): Attribute
+  deleteAttribute(id: ID): Attribute
 }
 
 # ProductImageCreateManyWithoutProductInput
@@ -69,6 +80,7 @@ type Query {
   productImages: [ProductImage]
   productTypes: [ProductType]
   productType(where: ProductTypeWhereUniqueInput): ProductType
+  attributes: [Attribute]
 }
 
 type User {
