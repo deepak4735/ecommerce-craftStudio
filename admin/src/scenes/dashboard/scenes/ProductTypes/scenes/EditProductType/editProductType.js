@@ -164,7 +164,10 @@ const EditProductType = props => {
                         style={{
                           border: 'none',
                           opacity:
-                            state.shippingRequired === false ? '0.5' : '1'
+                            state.shippingRequired === false ||
+                            data.productType.shippingRequired === false
+                              ? '0.5'
+                              : '1'
                         }}
                       >
                         <Container

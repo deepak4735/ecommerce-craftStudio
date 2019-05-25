@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 // Import scenes
 import Home from '../../scenes/Home/index';
 import Products from '../../scenes/Products/index';
+import Categories from '../../scenes/Categories/index';
 import ProductTypes from '../../scenes/ProductTypes/index';
 import CreateProductType from '../../scenes/ProductTypes/scenes/CreateNewProductType/createNewProductType';
 import EditProductType from '../../scenes/ProductTypes/scenes/EditProductType/editProductType';
@@ -15,6 +16,7 @@ const Main = () => {
       <Switch>
         <Route exact path='/' component={Home} />
         <Route exact path='/products' component={Products} />
+        <Route exact path='/categories' component={Categories} />
 
         <Route
           exact

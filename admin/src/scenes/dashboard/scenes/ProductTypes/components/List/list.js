@@ -16,8 +16,8 @@ const ListComponent = props => {
   return (
     <ListContainer width={width} height={height}>
       <ListHeaders>
-        {headers.map(header => (
-          <HeaderItem>{header}</HeaderItem>
+        {headers.map((header, i) => (
+          <HeaderItem key={i}>{header}</HeaderItem>
         ))}
         {addBtn && (
           <Toggle>
@@ -51,7 +51,9 @@ const ListComponent = props => {
       </ListHeaders>
       <ProductList>
         {listItemArray !== undefined
-          ? listItemArray.map(listItem => <ListItem data={listItem} />)
+          ? listItemArray.map(listItem => (
+              <ListItem key={listItem.id} data={listItem} />
+            ))
           : ''}
       </ProductList>
     </ListContainer>

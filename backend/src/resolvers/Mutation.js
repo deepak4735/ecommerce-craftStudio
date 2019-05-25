@@ -190,6 +190,34 @@ const Mutations = {
 
     return category;
   },
+  async updateCategory(parent, args, ctx, info) {
+    const updatedCategorySlug = slugify(args.name, {
+      lower: true
+    });
+    const updatedCategory = await ctx.db.mutation.updateCategory({
+      data: {
+        name: args.name,
+        description: args.description,
+        slug: updatedCategorySlug
+      },
+      where: {
+        id: args.id
+      },
+      info
+    });
+
+    return updatedCategory;
+  },
+  async deleteCategory(parent, args, ctx, info) {
+    const deleteCategory = await ctx.db.mutation.deleteCategory({
+      where: {
+        id: args.id
+      },
+      info
+    });
+
+    return deleteCategory;
+  },
   async createProductType(parent, args, ctx, info) {
     // if (!ctx.request.userId) {
     //   throw new Error('You must be logged in to do that');
@@ -268,7 +296,6 @@ const Mutations = {
     return updatedAttribute;
   },
   async deleteAttribute(parent, args, ctx, info) {
-    console.log(args.id);
     const deleteAttribute = await ctx.db.mutation.deleteAttribute(
       {
         where: {
@@ -279,6 +306,18 @@ const Mutations = {
     );
 
     return deleteAttribute;
+  },
+  async deleteAttributeValue(parent, args, ctx, info) {
+    const deleteAttributeValue = await ctx.db.mutation.deleteAttributeValue(
+      {
+        where: {
+          id: args.id
+        }
+      },
+      info
+    );
+
+    return deleteAttributeValue;
   }
 };
 

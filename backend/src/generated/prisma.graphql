@@ -1,5 +1,5 @@
 # source: https://eu1.prisma.sh/morten-vistisen-de8af9/craftstudio/dev
-# timestamp: Fri May 17 2019 14:27:10 GMT+0200 (Central European Summer Time)
+# timestamp: Sat May 25 2019 14:10:18 GMT+0200 (Central European Summer Time)
 
 type AggregateAttribute {
   count: Int!
@@ -751,8 +751,8 @@ type BatchPayload {
 type Category implements Node {
   id: ID!
   name: String!
-  slug: String!
-  description: String!
+  slug: String
+  description: String
   productsInCategory(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Product!]
 }
 
@@ -769,8 +769,8 @@ type CategoryConnection {
 input CategoryCreateInput {
   id: ID
   name: String!
-  slug: String!
-  description: String!
+  slug: String
+  description: String
   productsInCategory: ProductCreateManyWithoutCategoryInput
 }
 
@@ -782,8 +782,8 @@ input CategoryCreateOneWithoutProductsInCategoryInput {
 input CategoryCreateWithoutProductsInCategoryInput {
   id: ID
   name: String!
-  slug: String!
-  description: String!
+  slug: String
+  description: String
 }
 
 """An edge in a connection."""
@@ -809,8 +809,8 @@ enum CategoryOrderByInput {
 type CategoryPreviousValues {
   id: ID!
   name: String!
-  slug: String!
-  description: String!
+  slug: String
+  description: String
 }
 
 type CategorySubscriptionPayload {

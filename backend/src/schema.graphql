@@ -33,7 +33,14 @@ type Mutation {
     price: Int
     available: Boolean
   ): Product
-  createCategory(name: String!, slug: String!, description: String!): Category
+  createCategory(name: String!, slug: String, description: String): Category
+  updateCategory(
+    id: ID
+    name: String
+    slug: String
+    description: String
+  ): Category
+  deleteCategory(id: ID): Category
   createProductType(
     id: ID
     name: String!
@@ -59,8 +66,6 @@ type Mutation {
     attributeValues: AttributeValueCreateManyInput
   ): Attribute
   updateProductTypeAttribute(
-    # data: AttributeUpdateInput
-    # where: AttributeWhereUniqueInput
     id: ID
     attributeName: String
     productType: ProductTypeUpdateOneWithoutProductAttributesInput
@@ -68,6 +73,7 @@ type Mutation {
     attributeValues: AttributeValueUpdateManyInput
   ): Attribute
   deleteAttribute(id: ID): Attribute
+  deleteAttributeValue(id: ID): AttributeValue
 }
 
 # ProductImageCreateManyWithoutProductInput
@@ -81,6 +87,7 @@ type Query {
   productTypes: [ProductType]
   productType(where: ProductTypeWhereUniqueInput): ProductType
   attributes: [Attribute]
+  categories: [Category]
 }
 
 type User {

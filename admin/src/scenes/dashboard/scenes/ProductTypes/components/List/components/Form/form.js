@@ -5,9 +5,10 @@ import { Close } from '@material-ui/icons';
 
 // Import components
 import DeleteButton from './components/deleteBtn';
+import AttributeValue from './components/AttributeValue';
 
 // Import styles
-import { FormContainer, AttributeValue, FormHeader } from './styles';
+import { FormContainer, FormHeader } from './styles';
 import {
   Label,
   Input
@@ -66,10 +67,6 @@ const Form = props => {
 
   const { name, func } = props.mutation;
 
-  // let attributeValues = state.attributeValues.filter(
-  //   el => el.id !== typeof String
-  // );
-
   let attributeValues = state.attributeValues.filter(el => !el.id);
 
   return (
@@ -122,8 +119,9 @@ const Form = props => {
             <Container flexDirection='column'>
               <Label htmlfor='attributeValue'>Attribute value</Label>
               <Input
+                type='text'
                 flexBasis='4rem'
-                value={state.attributeValue}
+                // value={state.attributeValue}
                 id='attributeValue'
                 onChange={e => handleAttribute(e)}
               />
@@ -133,11 +131,9 @@ const Form = props => {
               Add value
             </button>
           </Container>
-          <Container height='30%' wrap='wrap' background='white'>
+          <Container height='30%' wrap='wrap'>
             {state.attributeValues.map((el, i) => (
-              <AttributeValue key={i} id={i}>
-                {el.value}
-              </AttributeValue>
+              <AttributeValue key={i} id={i} data={el} />
             ))}
           </Container>
           <button>

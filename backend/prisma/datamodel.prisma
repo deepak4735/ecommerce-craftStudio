@@ -35,8 +35,8 @@ type Product {
 type Category {
   id: ID! @id
   name: String!
-  slug: String!
-  description: String!
+  slug: String
+  description: String
   productsInCategory: [Product!]!
 }
 
