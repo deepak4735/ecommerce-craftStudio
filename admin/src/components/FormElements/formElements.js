@@ -6,6 +6,7 @@ export const Label = styled.label`
   opacity: 75%;
   font-size: 1.5rem;
   min-width: 20rem;
+  font-weight: ${props => props.fontWeight};
 `;
 
 export const Input = styled.input`
@@ -16,24 +17,28 @@ export const Input = styled.input`
   border-radius: ${props => props.theme.defaultBorderRadius};
   padding: ${props => props.inputPadding};
   /* color: ${props => props.theme.paragraphs}; */
+  padding-left: 1rem;
   color: white;
   font-size: 1.35rem;
 `;
 
 export const TextArea = styled.textarea`
   flex: 0 1 ${props => props.flexBasis};
-  width: 70%;
+  width: 100%;
   outline: none;
-
+  padding-top: 1rem;
+  padding-left: 1rem;
   border: none;
-  background: transparent;
+  border-radius: ${props => props.theme.defaultBorderRadius};
+
+  background: ${props => props.theme.headers};
   border-bottom: 1px solid ${props => props.theme.headers};
   font-size: 1.35rem;
 
   resize: none;
   overflow: auto;
 
-  color: ${props => props.theme.paragraphs};
+  color: white;
 `;
 
 export const Select = styled.select`

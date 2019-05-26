@@ -26,7 +26,9 @@ const Query = {
 
   attributes: forwardTo('db'),
 
-  categories: forwardTo('db')
+  categories: forwardTo('db'),
+
+  category: forwardTo('db')
 };
 
 module.exports = Query;

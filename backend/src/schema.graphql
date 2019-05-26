@@ -41,6 +41,7 @@ type Mutation {
     description: String
   ): Category
   deleteCategory(id: ID): Category
+  deleteManyCategories(id_in: [ID!]): BatchPayload!
   createProductType(
     id: ID
     name: String!
@@ -88,6 +89,7 @@ type Query {
   productType(where: ProductTypeWhereUniqueInput): ProductType
   attributes: [Attribute]
   categories: [Category]
+  category(where: CategoryWhereUniqueInput): Category
 }
 
 type User {

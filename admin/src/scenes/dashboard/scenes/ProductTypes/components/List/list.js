@@ -12,7 +12,6 @@ import Modal from '../../../../../../components/Modal/Modal';
 
 const ListComponent = props => {
   const { headers, listItemArray, width, height, addBtn } = props;
-  console.log(props);
   return (
     <ListContainer width={width} height={height}>
       <ListHeaders>

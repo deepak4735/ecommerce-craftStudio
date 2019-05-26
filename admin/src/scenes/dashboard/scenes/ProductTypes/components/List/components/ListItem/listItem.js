@@ -10,7 +10,6 @@ import { ListItemContainer, ItemValue, ItemName, Section } from './styles';
 
 const ListItem = props => {
   const { attributeName, attributeValues } = props.data;
-  console.log(props.data);
   return (
     <Toggle>
       {({ on, toggle }) => (

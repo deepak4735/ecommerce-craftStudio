@@ -40,8 +40,6 @@ class ProductTypes extends Component {
       <ProductTypesContainer>
         <Query query={ALL_PRODUCT_TYPES_QUERY}>
           {({ data, loading, error }) => {
-            console.log(data);
-            console.log(loading);
             if (loading) return <p>Loading..</p>;
             return (
               <List
@@ -53,12 +51,9 @@ class ProductTypes extends Component {
             );
           }}
         </Query>
-
-        <CreateProductTypeBtn>
-          <Link to='/product-types/create-product-type'>
-            Create product type
-          </Link>
-        </CreateProductTypeBtn>
+        <Link to='/product-types/create-product-type'>
+          <CreateProductTypeBtn>Create product type</CreateProductTypeBtn>
+        </Link>
       </ProductTypesContainer>
     );
   }

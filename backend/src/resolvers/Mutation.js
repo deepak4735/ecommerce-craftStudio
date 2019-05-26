@@ -191,22 +191,49 @@ const Mutations = {
     return category;
   },
   async updateCategory(parent, args, ctx, info) {
-    const updatedCategorySlug = slugify(args.name, {
-      lower: true
-    });
-    const updatedCategory = await ctx.db.mutation.updateCategory({
-      data: {
-        name: args.name,
-        description: args.description,
-        slug: updatedCategorySlug
-      },
-      where: {
-        id: args.id
-      },
-      info
-    });
+    if (args.name !== undefined) {
+      const updatedCategorySlug = slugify(args.name, {
+        lower: true
+      });
 
-    return updatedCategory;
+      const updatedCategory = await ctx.db.mutation.updateCategory({
+        data: {
+          name: args.name,
+          description: args.description,
+          slug: updatedCategorySlug
+        },
+        where: {
+          id: args.id
+        },
+        info
+      });
+
+      return updatedCategory;
+    } else {
+      const category = await ctx.db.query.category({
+        where: {
+          id: args.id
+        }
+      });
+
+      const updatedCategorySlug = slugify(category.name, {
+        lower: true
+      });
+
+      const updatedCategory = await ctx.db.mutation.updateCategory({
+        data: {
+          name: args.name,
+          description: args.description,
+          slug: updatedCategorySlug
+        },
+        where: {
+          id: args.id
+        },
+        info
+      });
+
+      return updatedCategory;
+    }
   },
   async deleteCategory(parent, args, ctx, info) {
     const deleteCategory = await ctx.db.mutation.deleteCategory({
@@ -217,6 +244,17 @@ const Mutations = {
     });
 
     return deleteCategory;
+  },
+  async deleteManyCategories(parent, args, ctx, info) {
+    console.log(args);
+    const deleteManyCategories = await ctx.db.mutation.deleteManyCategories({
+      where: {
+        id_in: [...args.id_in]
+      },
+      info
+    });
+
+    return deleteManyCategories;
   },
   async createProductType(parent, args, ctx, info) {
     // if (!ctx.request.userId) {
