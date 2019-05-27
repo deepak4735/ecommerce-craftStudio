@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const CategoriesContainer = styled.div`
+export const StockContainer = styled.div`
   grid-area: main;
   width: 100%;
   height: 100%;
@@ -14,24 +14,12 @@ export const CategoriesContainer = styled.div`
   flex-direction: column;
 `;
 
-export const ListNameAndBtnContainer = styled.div`
+export const ButtonContainer = styled.div`
   width: 80rem;
   height: 4rem;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-
-  h2 {
-    margin: 0;
-  }
-`;
-
-export const ButtonContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
   justify-content: flex-end;
+  margin-bottom: 2rem;
 `;
 
 export const Button = styled.button`

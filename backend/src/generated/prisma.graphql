@@ -1,5 +1,5 @@
 # source: https://eu1.prisma.sh/morten-vistisen-de8af9/craftstudio/dev
-# timestamp: Sat May 25 2019 14:10:18 GMT+0200 (Central European Summer Time)
+# timestamp: Mon May 27 2019 17:36:21 GMT+0200 (Central European Summer Time)
 
 type AggregateAttribute {
   count: Int!
@@ -1356,9 +1356,9 @@ type Mutation {
   createProductImage(data: ProductImageCreateInput!): ProductImage!
   createAttribute(data: AttributeCreateInput!): Attribute!
   createStock(data: StockCreateInput!): Stock!
+  createStockLocation(data: StockLocationCreateInput!): StockLocation!
   createWeight(data: WeightCreateInput!): Weight!
   createProductVariant(data: ProductVariantCreateInput!): ProductVariant!
-  createStockLocation(data: StockLocationCreateInput!): StockLocation!
   createAttributeValue(data: AttributeValueCreateInput!): AttributeValue!
   createProductType(data: ProductTypeCreateInput!): ProductType!
   createMoney(data: MoneyCreateInput!): Money!
@@ -1369,9 +1369,9 @@ type Mutation {
   updateProductImage(data: ProductImageUpdateInput!, where: ProductImageWhereUniqueInput!): ProductImage
   updateAttribute(data: AttributeUpdateInput!, where: AttributeWhereUniqueInput!): Attribute
   updateStock(data: StockUpdateInput!, where: StockWhereUniqueInput!): Stock
+  updateStockLocation(data: StockLocationUpdateInput!, where: StockLocationWhereUniqueInput!): StockLocation
   updateWeight(data: WeightUpdateInput!, where: WeightWhereUniqueInput!): Weight
   updateProductVariant(data: ProductVariantUpdateInput!, where: ProductVariantWhereUniqueInput!): ProductVariant
-  updateStockLocation(data: StockLocationUpdateInput!, where: StockLocationWhereUniqueInput!): StockLocation
   updateAttributeValue(data: AttributeValueUpdateInput!, where: AttributeValueWhereUniqueInput!): AttributeValue
   updateProductType(data: ProductTypeUpdateInput!, where: ProductTypeWhereUniqueInput!): ProductType
   updateMoney(data: MoneyUpdateInput!, where: MoneyWhereUniqueInput!): Money
@@ -1382,9 +1382,9 @@ type Mutation {
   deleteProductImage(where: ProductImageWhereUniqueInput!): ProductImage
   deleteAttribute(where: AttributeWhereUniqueInput!): Attribute
   deleteStock(where: StockWhereUniqueInput!): Stock
+  deleteStockLocation(where: StockLocationWhereUniqueInput!): StockLocation
   deleteWeight(where: WeightWhereUniqueInput!): Weight
   deleteProductVariant(where: ProductVariantWhereUniqueInput!): ProductVariant
-  deleteStockLocation(where: StockLocationWhereUniqueInput!): StockLocation
   deleteAttributeValue(where: AttributeValueWhereUniqueInput!): AttributeValue
   deleteProductType(where: ProductTypeWhereUniqueInput!): ProductType
   deleteMoney(where: MoneyWhereUniqueInput!): Money
@@ -1395,9 +1395,9 @@ type Mutation {
   upsertProductImage(where: ProductImageWhereUniqueInput!, create: ProductImageCreateInput!, update: ProductImageUpdateInput!): ProductImage!
   upsertAttribute(where: AttributeWhereUniqueInput!, create: AttributeCreateInput!, update: AttributeUpdateInput!): Attribute!
   upsertStock(where: StockWhereUniqueInput!, create: StockCreateInput!, update: StockUpdateInput!): Stock!
+  upsertStockLocation(where: StockLocationWhereUniqueInput!, create: StockLocationCreateInput!, update: StockLocationUpdateInput!): StockLocation!
   upsertWeight(where: WeightWhereUniqueInput!, create: WeightCreateInput!, update: WeightUpdateInput!): Weight!
   upsertProductVariant(where: ProductVariantWhereUniqueInput!, create: ProductVariantCreateInput!, update: ProductVariantUpdateInput!): ProductVariant!
-  upsertStockLocation(where: StockLocationWhereUniqueInput!, create: StockLocationCreateInput!, update: StockLocationUpdateInput!): StockLocation!
   upsertAttributeValue(where: AttributeValueWhereUniqueInput!, create: AttributeValueCreateInput!, update: AttributeValueUpdateInput!): AttributeValue!
   upsertProductType(where: ProductTypeWhereUniqueInput!, create: ProductTypeCreateInput!, update: ProductTypeUpdateInput!): ProductType!
   upsertMoney(where: MoneyWhereUniqueInput!, create: MoneyCreateInput!, update: MoneyUpdateInput!): Money!
@@ -1408,9 +1408,9 @@ type Mutation {
   updateManyProductImages(data: ProductImageUpdateManyMutationInput!, where: ProductImageWhereInput): BatchPayload!
   updateManyAttributes(data: AttributeUpdateManyMutationInput!, where: AttributeWhereInput): BatchPayload!
   updateManyStocks(data: StockUpdateManyMutationInput!, where: StockWhereInput): BatchPayload!
+  updateManyStockLocations(data: StockLocationUpdateManyMutationInput!, where: StockLocationWhereInput): BatchPayload!
   updateManyWeights(data: WeightUpdateManyMutationInput!, where: WeightWhereInput): BatchPayload!
   updateManyProductVariants(data: ProductVariantUpdateManyMutationInput!, where: ProductVariantWhereInput): BatchPayload!
-  updateManyStockLocations(data: StockLocationUpdateManyMutationInput!, where: StockLocationWhereInput): BatchPayload!
   updateManyAttributeValues(data: AttributeValueUpdateManyMutationInput!, where: AttributeValueWhereInput): BatchPayload!
   updateManyProductTypes(data: ProductTypeUpdateManyMutationInput!, where: ProductTypeWhereInput): BatchPayload!
   updateManyMoneys(data: MoneyUpdateManyMutationInput!, where: MoneyWhereInput): BatchPayload!
@@ -1421,9 +1421,9 @@ type Mutation {
   deleteManyProductImages(where: ProductImageWhereInput): BatchPayload!
   deleteManyAttributes(where: AttributeWhereInput): BatchPayload!
   deleteManyStocks(where: StockWhereInput): BatchPayload!
+  deleteManyStockLocations(where: StockLocationWhereInput): BatchPayload!
   deleteManyWeights(where: WeightWhereInput): BatchPayload!
   deleteManyProductVariants(where: ProductVariantWhereInput): BatchPayload!
-  deleteManyStockLocations(where: StockLocationWhereInput): BatchPayload!
   deleteManyAttributeValues(where: AttributeValueWhereInput): BatchPayload!
   deleteManyProductTypes(where: ProductTypeWhereInput): BatchPayload!
   deleteManyMoneys(where: MoneyWhereInput): BatchPayload!
@@ -3764,9 +3764,9 @@ type Query {
   productImages(where: ProductImageWhereInput, orderBy: ProductImageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ProductImage]!
   attributes(where: AttributeWhereInput, orderBy: AttributeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Attribute]!
   stocks(where: StockWhereInput, orderBy: StockOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Stock]!
+  stockLocations(where: StockLocationWhereInput, orderBy: StockLocationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [StockLocation]!
   weights(where: WeightWhereInput, orderBy: WeightOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Weight]!
   productVariants(where: ProductVariantWhereInput, orderBy: ProductVariantOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ProductVariant]!
-  stockLocations(where: StockLocationWhereInput, orderBy: StockLocationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [StockLocation]!
   attributeValues(where: AttributeValueWhereInput, orderBy: AttributeValueOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [AttributeValue]!
   productTypes(where: ProductTypeWhereInput, orderBy: ProductTypeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ProductType]!
   moneys(where: MoneyWhereInput, orderBy: MoneyOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Money]!
@@ -3777,9 +3777,9 @@ type Query {
   productImage(where: ProductImageWhereUniqueInput!): ProductImage
   attribute(where: AttributeWhereUniqueInput!): Attribute
   stock(where: StockWhereUniqueInput!): Stock
+  stockLocation(where: StockLocationWhereUniqueInput!): StockLocation
   weight(where: WeightWhereUniqueInput!): Weight
   productVariant(where: ProductVariantWhereUniqueInput!): ProductVariant
-  stockLocation(where: StockLocationWhereUniqueInput!): StockLocation
   attributeValue(where: AttributeValueWhereUniqueInput!): AttributeValue
   productType(where: ProductTypeWhereUniqueInput!): ProductType
   money(where: MoneyWhereUniqueInput!): Money
@@ -3790,9 +3790,9 @@ type Query {
   productImagesConnection(where: ProductImageWhereInput, orderBy: ProductImageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ProductImageConnection!
   attributesConnection(where: AttributeWhereInput, orderBy: AttributeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): AttributeConnection!
   stocksConnection(where: StockWhereInput, orderBy: StockOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): StockConnection!
+  stockLocationsConnection(where: StockLocationWhereInput, orderBy: StockLocationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): StockLocationConnection!
   weightsConnection(where: WeightWhereInput, orderBy: WeightOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): WeightConnection!
   productVariantsConnection(where: ProductVariantWhereInput, orderBy: ProductVariantOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ProductVariantConnection!
-  stockLocationsConnection(where: StockLocationWhereInput, orderBy: StockLocationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): StockLocationConnection!
   attributeValuesConnection(where: AttributeValueWhereInput, orderBy: AttributeValueOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): AttributeValueConnection!
   productTypesConnection(where: ProductTypeWhereInput, orderBy: ProductTypeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ProductTypeConnection!
   moneysConnection(where: MoneyWhereInput, orderBy: MoneyOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): MoneyConnection!
@@ -3828,7 +3828,19 @@ input StockCreateInput {
   quantity: Int!
   quantityAllocated: Int
   variant: ProductVariantCreateOneInput
-  location: StockLocationCreateOneInput!
+  location: StockLocationCreateOneWithoutStockInput!
+}
+
+input StockCreateManyWithoutLocationInput {
+  create: [StockCreateWithoutLocationInput!]
+  connect: [StockWhereUniqueInput!]
+}
+
+input StockCreateWithoutLocationInput {
+  id: ID
+  quantity: Int!
+  quantityAllocated: Int
+  variant: ProductVariantCreateOneInput
 }
 
 """An edge in a connection."""
@@ -3843,6 +3855,10 @@ type StockEdge {
 type StockLocation implements Node {
   id: ID!
   name: String!
+  address: String!
+  postNumber: Int!
+  city: String!
+  stock(where: StockWhereInput, orderBy: StockOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Stock!]
 }
 
 """A connection to a list of items."""
@@ -3858,11 +3874,23 @@ type StockLocationConnection {
 input StockLocationCreateInput {
   id: ID
   name: String!
+  address: String!
+  postNumber: Int!
+  city: String!
+  stock: StockCreateManyWithoutLocationInput
 }
 
-input StockLocationCreateOneInput {
-  create: StockLocationCreateInput
+input StockLocationCreateOneWithoutStockInput {
+  create: StockLocationCreateWithoutStockInput
   connect: StockLocationWhereUniqueInput
+}
+
+input StockLocationCreateWithoutStockInput {
+  id: ID
+  name: String!
+  address: String!
+  postNumber: Int!
+  city: String!
 }
 
 """An edge in a connection."""
@@ -3879,11 +3907,20 @@ enum StockLocationOrderByInput {
   id_DESC
   name_ASC
   name_DESC
+  address_ASC
+  address_DESC
+  postNumber_ASC
+  postNumber_DESC
+  city_ASC
+  city_DESC
 }
 
 type StockLocationPreviousValues {
   id: ID!
   name: String!
+  address: String!
+  postNumber: Int!
+  city: String!
 }
 
 type StockLocationSubscriptionPayload {
@@ -3923,28 +3960,38 @@ input StockLocationSubscriptionWhereInput {
   node: StockLocationWhereInput
 }
 
-input StockLocationUpdateDataInput {
-  name: String
-}
-
 input StockLocationUpdateInput {
   name: String
+  address: String
+  postNumber: Int
+  city: String
+  stock: StockUpdateManyWithoutLocationInput
 }
 
 input StockLocationUpdateManyMutationInput {
   name: String
+  address: String
+  postNumber: Int
+  city: String
 }
 
-input StockLocationUpdateOneRequiredInput {
-  create: StockLocationCreateInput
+input StockLocationUpdateOneRequiredWithoutStockInput {
+  create: StockLocationCreateWithoutStockInput
   connect: StockLocationWhereUniqueInput
-  update: StockLocationUpdateDataInput
-  upsert: StockLocationUpsertNestedInput
+  update: StockLocationUpdateWithoutStockDataInput
+  upsert: StockLocationUpsertWithoutStockInput
 }
 
-input StockLocationUpsertNestedInput {
-  update: StockLocationUpdateDataInput!
-  create: StockLocationCreateInput!
+input StockLocationUpdateWithoutStockDataInput {
+  name: String
+  address: String
+  postNumber: Int
+  city: String
+}
+
+input StockLocationUpsertWithoutStockInput {
+  update: StockLocationUpdateWithoutStockDataInput!
+  create: StockLocationCreateWithoutStockInput!
 }
 
 input StockLocationWhereInput {
@@ -4036,6 +4083,111 @@ input StockLocationWhereInput {
 
   """All values not ending with the given string."""
   name_not_ends_with: String
+  address: String
+
+  """All values that are not equal to given value."""
+  address_not: String
+
+  """All values that are contained in given list."""
+  address_in: [String!]
+
+  """All values that are not contained in given list."""
+  address_not_in: [String!]
+
+  """All values less than the given value."""
+  address_lt: String
+
+  """All values less than or equal the given value."""
+  address_lte: String
+
+  """All values greater than the given value."""
+  address_gt: String
+
+  """All values greater than or equal the given value."""
+  address_gte: String
+
+  """All values containing the given string."""
+  address_contains: String
+
+  """All values not containing the given string."""
+  address_not_contains: String
+
+  """All values starting with the given string."""
+  address_starts_with: String
+
+  """All values not starting with the given string."""
+  address_not_starts_with: String
+
+  """All values ending with the given string."""
+  address_ends_with: String
+
+  """All values not ending with the given string."""
+  address_not_ends_with: String
+  postNumber: Int
+
+  """All values that are not equal to given value."""
+  postNumber_not: Int
+
+  """All values that are contained in given list."""
+  postNumber_in: [Int!]
+
+  """All values that are not contained in given list."""
+  postNumber_not_in: [Int!]
+
+  """All values less than the given value."""
+  postNumber_lt: Int
+
+  """All values less than or equal the given value."""
+  postNumber_lte: Int
+
+  """All values greater than the given value."""
+  postNumber_gt: Int
+
+  """All values greater than or equal the given value."""
+  postNumber_gte: Int
+  city: String
+
+  """All values that are not equal to given value."""
+  city_not: String
+
+  """All values that are contained in given list."""
+  city_in: [String!]
+
+  """All values that are not contained in given list."""
+  city_not_in: [String!]
+
+  """All values less than the given value."""
+  city_lt: String
+
+  """All values less than or equal the given value."""
+  city_lte: String
+
+  """All values greater than the given value."""
+  city_gt: String
+
+  """All values greater than or equal the given value."""
+  city_gte: String
+
+  """All values containing the given string."""
+  city_contains: String
+
+  """All values not containing the given string."""
+  city_not_contains: String
+
+  """All values starting with the given string."""
+  city_starts_with: String
+
+  """All values not starting with the given string."""
+  city_not_starts_with: String
+
+  """All values ending with the given string."""
+  city_ends_with: String
+
+  """All values not ending with the given string."""
+  city_not_ends_with: String
+  stock_every: StockWhereInput
+  stock_some: StockWhereInput
+  stock_none: StockWhereInput
 }
 
 input StockLocationWhereUniqueInput {
@@ -4055,6 +4207,101 @@ type StockPreviousValues {
   id: ID!
   quantity: Int!
   quantityAllocated: Int
+}
+
+input StockScalarWhereInput {
+  """Logical AND on all given filters."""
+  AND: [StockScalarWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [StockScalarWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [StockScalarWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  quantity: Int
+
+  """All values that are not equal to given value."""
+  quantity_not: Int
+
+  """All values that are contained in given list."""
+  quantity_in: [Int!]
+
+  """All values that are not contained in given list."""
+  quantity_not_in: [Int!]
+
+  """All values less than the given value."""
+  quantity_lt: Int
+
+  """All values less than or equal the given value."""
+  quantity_lte: Int
+
+  """All values greater than the given value."""
+  quantity_gt: Int
+
+  """All values greater than or equal the given value."""
+  quantity_gte: Int
+  quantityAllocated: Int
+
+  """All values that are not equal to given value."""
+  quantityAllocated_not: Int
+
+  """All values that are contained in given list."""
+  quantityAllocated_in: [Int!]
+
+  """All values that are not contained in given list."""
+  quantityAllocated_not_in: [Int!]
+
+  """All values less than the given value."""
+  quantityAllocated_lt: Int
+
+  """All values less than or equal the given value."""
+  quantityAllocated_lte: Int
+
+  """All values greater than the given value."""
+  quantityAllocated_gt: Int
+
+  """All values greater than or equal the given value."""
+  quantityAllocated_gte: Int
 }
 
 type StockSubscriptionPayload {
@@ -4098,12 +4345,51 @@ input StockUpdateInput {
   quantity: Int
   quantityAllocated: Int
   variant: ProductVariantUpdateOneInput
-  location: StockLocationUpdateOneRequiredInput
+  location: StockLocationUpdateOneRequiredWithoutStockInput
+}
+
+input StockUpdateManyDataInput {
+  quantity: Int
+  quantityAllocated: Int
 }
 
 input StockUpdateManyMutationInput {
   quantity: Int
   quantityAllocated: Int
+}
+
+input StockUpdateManyWithoutLocationInput {
+  create: [StockCreateWithoutLocationInput!]
+  connect: [StockWhereUniqueInput!]
+  set: [StockWhereUniqueInput!]
+  disconnect: [StockWhereUniqueInput!]
+  delete: [StockWhereUniqueInput!]
+  update: [StockUpdateWithWhereUniqueWithoutLocationInput!]
+  updateMany: [StockUpdateManyWithWhereNestedInput!]
+  deleteMany: [StockScalarWhereInput!]
+  upsert: [StockUpsertWithWhereUniqueWithoutLocationInput!]
+}
+
+input StockUpdateManyWithWhereNestedInput {
+  where: StockScalarWhereInput!
+  data: StockUpdateManyDataInput!
+}
+
+input StockUpdateWithoutLocationDataInput {
+  quantity: Int
+  quantityAllocated: Int
+  variant: ProductVariantUpdateOneInput
+}
+
+input StockUpdateWithWhereUniqueWithoutLocationInput {
+  where: StockWhereUniqueInput!
+  data: StockUpdateWithoutLocationDataInput!
+}
+
+input StockUpsertWithWhereUniqueWithoutLocationInput {
+  where: StockWhereUniqueInput!
+  update: StockUpdateWithoutLocationDataInput!
+  create: StockCreateWithoutLocationInput!
 }
 
 input StockWhereInput {
@@ -4214,9 +4500,9 @@ type Subscription {
   productImage(where: ProductImageSubscriptionWhereInput): ProductImageSubscriptionPayload
   attribute(where: AttributeSubscriptionWhereInput): AttributeSubscriptionPayload
   stock(where: StockSubscriptionWhereInput): StockSubscriptionPayload
+  stockLocation(where: StockLocationSubscriptionWhereInput): StockLocationSubscriptionPayload
   weight(where: WeightSubscriptionWhereInput): WeightSubscriptionPayload
   productVariant(where: ProductVariantSubscriptionWhereInput): ProductVariantSubscriptionPayload
-  stockLocation(where: StockLocationSubscriptionWhereInput): StockLocationSubscriptionPayload
   attributeValue(where: AttributeValueSubscriptionWhereInput): AttributeValueSubscriptionPayload
   productType(where: ProductTypeSubscriptionWhereInput): ProductTypeSubscriptionPayload
   money(where: MoneySubscriptionWhereInput): MoneySubscriptionPayload

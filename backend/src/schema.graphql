@@ -75,6 +75,25 @@ type Mutation {
   ): Attribute
   deleteAttribute(id: ID): Attribute
   deleteAttributeValue(id: ID): AttributeValue
+  createStockLocation(
+    name: String!
+    address: String!
+    postNumber: Int!
+    city: String!
+  ): StockLocation
+  updateStockLocation(
+    id: ID!
+    name: String
+    address: String
+    postNumber: Int
+    city: String
+  ): StockLocation
+  deleteStockLocation(id: ID): StockLocation
+  deleteManyStockLocations(id_in: [ID!]): BatchPayload!
+  createTax(name: String!, taxRate: Int!): Tax!
+  updateTax(id: ID!, name: String, taxRate: Int): Tax
+  deleteTax(id: ID!): Tax
+  deleteManyTaxes(id_in: [ID!]): BatchPayload!
 }
 
 # ProductImageCreateManyWithoutProductInput
@@ -90,6 +109,10 @@ type Query {
   attributes: [Attribute]
   categories: [Category]
   category(where: CategoryWhereUniqueInput): Category
+  stockLocations: [StockLocation]
+  stockLocation(where: StockLocationWhereUniqueInput!): StockLocation
+  taxes: [Tax]!
+  tax(where: TaxWhereUniqueInput!): Tax
 }
 
 type User {

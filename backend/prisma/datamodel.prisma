@@ -103,6 +103,10 @@ type Stock {
 type StockLocation {
   id: ID! @id
   name: String!
+  address: String!
+  postNumber: Int!
+  city: String!
+  stock: [Stock]
 }
 
 # Money related

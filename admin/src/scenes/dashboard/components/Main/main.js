@@ -11,10 +11,16 @@ import EditCategory from '../../scenes/Categories/scenes/EditCategory/index';
 import ProductTypes from '../../scenes/ProductTypes/index';
 import CreateProductType from '../../scenes/ProductTypes/scenes/CreateNewProductType/createNewProductType';
 import EditProductType from '../../scenes/ProductTypes/scenes/EditProductType/editProductType';
+import Tax from '../../scenes/Tax/index';
+import Stock from '../../scenes/Stock/index';
+import Orders from '../../scenes/Orders/index';
+
+// Import styles
+import { MainContainer } from './styles';
 
 const Main = () => {
   return (
-    <>
+    <MainContainer>
       <Switch>
         <Route exact path='/' component={Home} />
         <Route exact path='/products' component={Products} />
@@ -42,10 +48,12 @@ const Main = () => {
           component={CreateProductType}
         />
         <Route exaxt path='/product-types' component={ProductTypes} />
-        <Route exact path='/orders' component={Home} />
-        <Route exact path='/stock' component={Home} />
+        <Route exact path='/orders' component={Orders} />
+        <Route exact path='/stock' component={Stock} />
+        <Route exact path='/taxes' component={Tax} />
+        <Route exact path='/user-management' component={Tax} />
       </Switch>
-    </>
+    </MainContainer>
   );
 };
 

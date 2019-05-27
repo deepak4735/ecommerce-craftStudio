@@ -8,8 +8,7 @@ import ListItem from './components/ListItem/listItem';
 
 // Import styled
 import {
-  CategoriesContainer,
-  ListNameAndBtnContainer,
+  OrdersContainer,
   FormContainer,
   FormHeaders,
   FormHeaderElement,
@@ -30,7 +29,7 @@ const Composed = adopt({
   )
 });
 
-const Categories = props => {
+const Taxes = props => {
   const [state, setState] = useState({
     id_in: []
   });
@@ -61,31 +60,23 @@ const Categories = props => {
         if (loading) return <p>Loading..</p>;
 
         return (
-          <CategoriesContainer>
-            <ListNameAndBtnContainer>
-              <h2>Categories</h2>
-              <ButtonContainer>
-                {state.id_in.length !== 0 ? (
-                  <Button
-                    color='danger'
-                    onClick={async e => {
-                      e.preventDefault();
-                      await deleteSelected({
-                        variables: { id_in: state.id_in }
-                      });
-                      refetch();
-                    }}
-                  >
-                    Delete selected
-                  </Button>
-                ) : null}
-
-                <Link to='/categories/create-new-category'>
-                  <Button>Create new category</Button>
-                </Link>
-              </ButtonContainer>
-            </ListNameAndBtnContainer>
-
+          <OrdersContainer>
+            <ButtonContainer>
+              {state.id_in.length !== 0 ? (
+                <Button
+                  color='danger'
+                  onClick={async e => {
+                    e.preventDefault();
+                    await deleteSelected({
+                      variables: { id_in: state.id_in }
+                    });
+                    refetch();
+                  }}
+                >
+                  Delete selected
+                </Button>
+              ) : null}
+            </ButtonContainer>
             <FormContainer>
               <FormHeaders>
                 <div style={{ width: '4rem' }} />
@@ -106,11 +97,11 @@ const Categories = props => {
                 ))}
               </ListItemContainer>
             </FormContainer>
-          </CategoriesContainer>
+          </OrdersContainer>
         );
       }}
     </Composed>
   );
 };
 
-export default Categories;
+export default Taxes;

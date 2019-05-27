@@ -356,6 +356,98 @@ const Mutations = {
     );
 
     return deleteAttributeValue;
+  },
+  async createStockLocation(parent, args, ctx, info) {
+    const createStockLocation = await ctx.db.mutation.createStockLocation({
+      data: {
+        ...args
+      },
+      info
+    });
+
+    return createStockLocation;
+  },
+  async updateStockLocation(parent, args, ctx, info) {
+    const updateStockLocation = await ctx.db.mutation.updateStockLocation({
+      data: {
+        name: args.name,
+        address: args.address,
+        postNumber: args.postNumber,
+        city: args.city
+      },
+      where: {
+        id: args.id
+      },
+      info
+    });
+
+    return updateStockLocation;
+  },
+  async deleteStockLocation(parent, args, ctx, info) {
+    const deleteStockLocation = await ctx.db.mutation.deleteStockLocation({
+      where: {
+        id: args.id
+      },
+      info
+    });
+
+    return deleteStockLocation;
+  },
+  async deleteManyStockLocations(parent, args, ctx, info) {
+    const deleteManyStockLocations = await ctx.db.mutation.deleteManyStockLocations(
+      {
+        where: {
+          id_in: [...args.id_in]
+        },
+        info
+      }
+    );
+
+    return deleteManyStockLocations;
+  },
+  async createTax(parent, args, ctx, info) {
+    const createTax = await ctx.db.mutation.createTax({
+      data: {
+        ...args
+      },
+      info
+    });
+
+    return createTax;
+  },
+  async updateTax(parent, args, ctx, info) {
+    const updateTax = await ctx.db.mutation.updateTax({
+      data: {
+        name: args.name,
+        taxRate: args.taxRate
+      },
+      where: {
+        id: args.id
+      },
+      info
+    });
+
+    return updateTax;
+  },
+  async deleteTax(parent, args, ctx, info) {
+    const deleteTax = await ctx.db.mutation.deleteTax({
+      where: {
+        id: args.id
+      },
+      info
+    });
+
+    return deleteTax;
+  },
+  async deleteManyTaxes(parent, args, ctx, info) {
+    const deleteManyTaxes = await ctx.db.mutation.deleteManyTaxes({
+      where: {
+        id_in: [...args.id_in]
+      },
+      info
+    });
+
+    return deleteManyTaxes;
   }
 };
 

@@ -46,30 +46,32 @@ class SignIn extends Component {
               return res;
             }}
           >
-            <fieldset disabled={loading} aria-busy={loading}>
-              <h2>Please login to continue</h2>
-              <Label htmlFor='email'>
-                Email
-                <Input
-                  type='email'
-                  name='email'
-                  placeholder='email'
-                  value={this.state.email}
-                  onChange={e => this.handleSignInput(e)}
-                />
-              </Label>
-              <Label htmlFor='password'>
-                Password
-                <Input
-                  type='password'
-                  name='password'
-                  placeholder='password'
-                  value={this.state.password}
-                  onChange={e => this.handleSignInput(e)}
-                />
-              </Label>
-              <button type='submit'>Login</button>
-            </fieldset>
+            <div>
+              <fieldset disabled={loading} aria-busy={loading}>
+                <h2>Please login to continue</h2>
+                <Label htmlFor='email'>
+                  Email
+                  <Input
+                    type='email'
+                    name='email'
+                    placeholder='email'
+                    value={this.state.email}
+                    onChange={e => this.handleSignInput(e)}
+                  />
+                </Label>
+                <Label htmlFor='password'>
+                  Password
+                  <Input
+                    type='password'
+                    name='password'
+                    placeholder='password'
+                    value={this.state.password}
+                    onChange={e => this.handleSignInput(e)}
+                  />
+                </Label>
+                <button type='submit'>Login</button>
+              </fieldset>
+            </div>
           </Form>
         )}
       </Mutation>

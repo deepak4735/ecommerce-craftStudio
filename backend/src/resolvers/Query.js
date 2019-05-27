@@ -28,7 +28,15 @@ const Query = {
 
   categories: forwardTo('db'),
 
-  category: forwardTo('db')
+  category: forwardTo('db'),
+
+  stockLocations: forwardTo('db'),
+
+  stockLocation: forwardTo('db'),
+
+  taxes: forwardTo('db'),
+
+  tax: forwardTo('db')
 };
 
 module.exports = Query;
