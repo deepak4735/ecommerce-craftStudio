@@ -430,6 +430,7 @@ const Mutations = {
     return updateTax;
   },
   async deleteTax(parent, args, ctx, info) {
+    console.log(args.id);
     const deleteTax = await ctx.db.mutation.deleteTax({
       where: {
         id: args.id

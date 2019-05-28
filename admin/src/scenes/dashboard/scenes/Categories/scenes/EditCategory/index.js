@@ -27,7 +27,14 @@ const EditCategory = props => {
 
   const update = (cache, payload) => {
     const data = cache.readQuery({ query: QUERY_ALL_CATEGORIES });
-    console.log(payload);
+    let newItem = {
+      ...payload.data.updateCategory
+    };
+
+    cache.writeQuery({
+      query: QUERY_ALL_CATEGORIES,
+      data: { categories: data.categories.concat(newItem) }
+    });
   };
 
   const { id } = props.match.params;
@@ -43,7 +50,7 @@ const EditCategory = props => {
             variables={{ id, ...state }}
             update={update}
           >
-            {updateCategory => {
+            {(updateCategory, { loading, error }) => {
               return (
                 <EditCategoryContainer>
                   <FormContainer
@@ -51,6 +58,9 @@ const EditCategory = props => {
                       e.preventDefault();
                       const res = await updateCategory();
                       console.log(res);
+                      if (!error && !loading) {
+                        props.history.goBack();
+                      }
                     }}
                   >
                     <ElementsContainer flexDirection='column' flexBasis='18%'>
@@ -81,9 +91,10 @@ const EditCategory = props => {
                       />
                     </ElementsContainer>
                     <ElementsContainer
-                      justifyContent='flex-end'
+                      justifyContent='space-between'
                       flexDirection='row'
                       flexBasis='10%'
+                      width='45%'
                     >
                       <DeleteBtn id={id} />
                       <Button>Submit</Button>

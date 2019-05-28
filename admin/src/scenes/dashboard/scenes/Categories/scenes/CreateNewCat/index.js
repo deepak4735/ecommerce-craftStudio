@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mutation } from 'react-apollo';
+import { withRouter } from 'react-router';
 
 // Import components
 import {
@@ -29,9 +30,6 @@ const CreateNewCat = props => {
   const update = (cache, payload) => {
     const data = cache.readQuery({ query: QUERY_ALL_CATEGORIES });
 
-    console.log(data);
-    console.log(payload);
-
     let newItem = {
       ...payload.data.createCategory,
       productsInCategory: []
@@ -57,6 +55,10 @@ const CreateNewCat = props => {
             onSubmit={async e => {
               e.preventDefault();
               const res = await createCategory();
+              console.log(res);
+              if (!error && !loading) {
+                props.history.goBack();
+              }
             }}
           >
             <ElementsContainer flexDirection='column' flexBasis='18%'>
@@ -98,4 +100,4 @@ const CreateNewCat = props => {
   );
 };
 
-export default CreateNewCat;
+export default withRouter(CreateNewCat);

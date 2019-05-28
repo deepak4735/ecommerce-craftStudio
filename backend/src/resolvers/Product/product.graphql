@@ -1,0 +1,19 @@
+# import * from './generated/prisma.graphql'
+
+type ProductMutation {
+  createProduct(
+    title: String!
+    description: String!
+    price: Int!
+    productImages: ProductImageCreateManyWithoutProductInput
+    available: Boolean!
+  ): Product!
+  deleteProduct(id: ID!): Product
+  updateProduct(
+    id: ID!
+    title: String
+    description: String
+    price: Int
+    available: Boolean
+  ): Product
+}

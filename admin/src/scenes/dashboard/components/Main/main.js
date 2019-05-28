@@ -12,6 +12,8 @@ import ProductTypes from '../../scenes/ProductTypes/index';
 import CreateProductType from '../../scenes/ProductTypes/scenes/CreateNewProductType/createNewProductType';
 import EditProductType from '../../scenes/ProductTypes/scenes/EditProductType/editProductType';
 import Tax from '../../scenes/Tax/index';
+import CreateTax from '../../scenes/Tax/scenes/CreateTax/index';
+import EditTax from '../../scenes/Tax/scenes/EditTax/index';
 import Stock from '../../scenes/Stock/index';
 import Orders from '../../scenes/Orders/index';
 
@@ -50,6 +52,8 @@ const Main = () => {
         <Route exaxt path='/product-types' component={ProductTypes} />
         <Route exact path='/orders' component={Orders} />
         <Route exact path='/stock' component={Stock} />
+        <Route exact path='/taxes/edit/:id' component={EditTax} />
+        <Route exact path='/taxes/create-new-tax' component={CreateTax} />
         <Route exact path='/taxes' component={Tax} />
         <Route exact path='/user-management' component={Tax} />
       </Switch>

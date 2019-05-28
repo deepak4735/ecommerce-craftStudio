@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const EditCategoryContainer = styled.div`
+export const EditTaxContainer = styled.div`
   grid-area: main;
   width: 100%;
   height: 100%;
@@ -17,11 +17,12 @@ export const EditCategoryContainer = styled.div`
 export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
-  width: 80rem;
+  width: 60rem;
   height: 40rem;
   border-radius: ${props => props.theme.defaultBorderRadius};
   background: ${props => props.theme.secondary};
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const ElementsContainer = styled.div`
@@ -30,6 +31,7 @@ export const ElementsContainer = styled.div`
   flex: 0 1 ${props => props.flexBasis};
   justify-content: ${props => props.justifyContent};
   width: ${props => props.width};
+  margin-bottom: 2rem;
 `;
 
 export const Button = styled.button`

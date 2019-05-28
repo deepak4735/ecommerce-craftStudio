@@ -21,7 +21,7 @@ const ListItem = props => {
       <SelectBox>
         <Input
           id={id}
-          onClick={e => props.deleteSelectedTaxes(e)}
+          onClick={e => props.delSelectedTaxes(e)}
           type='checkbox'
         />
       </SelectBox>
@@ -33,7 +33,7 @@ const ListItem = props => {
       <ProductsInCategory
         onClick={e => props.history.push(`/taxes/edit/${props.data.id}`)}
       >
-        {taxRate}
+        {taxRate}%
       </ProductsInCategory>
     </Container>
   );

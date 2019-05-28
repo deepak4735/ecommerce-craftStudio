@@ -9,6 +9,7 @@ import ListItem from './components/ListItem/listItem';
 // Import styled
 import {
   StockContainer,
+  ListNameAndBtnContainer,
   FormContainer,
   FormHeaders,
   FormHeaderElement,
@@ -65,26 +66,30 @@ const Stock = props => {
 
         return (
           <StockContainer>
-            <ButtonContainer>
-              {state.id_in.length !== 0 ? (
-                <Button
-                  color='danger'
-                  onClick={async e => {
-                    e.preventDefault();
-                    await deleteSelected({
-                      variables: { id_in: state.id_in }
-                    });
-                    refetch();
-                  }}
-                >
-                  Delete selected
-                </Button>
-              ) : null}
+            <ListNameAndBtnContainer>
+              <h2>Stock Locations</h2>
+              <ButtonContainer>
+                {state.id_in.length !== 0 ? (
+                  <Button
+                    color='danger'
+                    onClick={async e => {
+                      e.preventDefault();
+                      await deleteSelected({
+                        variables: { id_in: state.id_in }
+                      });
+                      refetch();
+                    }}
+                  >
+                    Delete selected
+                  </Button>
+                ) : null}
 
-              <Link to='/stockLocations/create-new-category'>
-                <Button>Create new stock </Button>
-              </Link>
-            </ButtonContainer>
+                <Link to='/stockLocations/create-new-category'>
+                  <Button>Create new stock </Button>
+                </Link>
+              </ButtonContainer>
+            </ListNameAndBtnContainer>
+
             <FormContainer>
               <FormHeaders>
                 <div style={{ width: '4rem' }} />

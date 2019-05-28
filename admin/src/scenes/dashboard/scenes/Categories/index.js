@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Query, Mutation } from 'react-apollo';
 import { Link } from 'react-router-dom';
 import { adopt } from 'react-adopt';
+import { withRouter } from 'react-router';
 
 // Import components
 import ListItem from './components/ListItem/listItem';
@@ -37,12 +38,19 @@ const Categories = props => {
 
   const delSelectedCategories = e => {
     let checked = e.target.checked;
+    let id = e.target.id;
+    id.toString();
     let id_in = state.id_in;
     if (checked) {
       id_in.push(e.target.id);
       setState({
         ...state,
         id_in
+      });
+    } else if (!checked) {
+      let updatedState = state.id_in.filter(itemId => itemId !== id);
+      setState({
+        id_in: [...updatedState]
       });
     } else {
       let id_in = state.id_in.filter(id => id !== e.target.id);
@@ -74,6 +82,7 @@ const Categories = props => {
                         variables: { id_in: state.id_in }
                       });
                       refetch();
+                      setState({ ...state, id_in: [] });
                     }}
                   >
                     Delete selected
@@ -113,4 +122,4 @@ const Categories = props => {
   );
 };
 
-export default Categories;
+export default withRouter(Categories);

@@ -14,9 +14,22 @@ export const TaxesContainer = styled.div`
   flex-direction: column;
 `;
 
-export const ButtonContainer = styled.div`
+export const ListNameAndBtnContainer = styled.div`
   width: 80rem;
   height: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+
+  h2 {
+    margin: 0;
+  }
+`;
+
+export const ButtonContainer = styled.div`
+  width: 50%;
+  height: 100%;
   display: flex;
   justify-content: flex-end;
   margin-bottom: 2rem;
