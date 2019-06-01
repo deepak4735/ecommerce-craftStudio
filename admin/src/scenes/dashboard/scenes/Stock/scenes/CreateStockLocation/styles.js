@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
-// New
-export const NewProductTypeContainer = styled.div`
+export const CreateStockLocContainer = styled.div`
   grid-area: main;
   width: 100%;
   height: 100%;
@@ -18,19 +17,21 @@ export const NewProductTypeContainer = styled.div`
 export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
-  width: 50rem;
+  width: 60rem;
   height: 40rem;
   border-radius: ${props => props.theme.defaultBorderRadius};
   background: ${props => props.theme.secondary};
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const ElementsContainer = styled.div`
   display: flex;
-  width: ${props => props.width};
   flex-direction: ${props => props.flexDirection};
   flex: 0 1 ${props => props.flexBasis};
   justify-content: ${props => props.justifyContent};
+  width: ${props => props.width};
+  margin-bottom: 2rem;
 `;
 
 export const Button = styled.button`
@@ -41,7 +42,6 @@ export const Button = styled.button`
   border-radius: ${props => props.theme.defaultBorderRadius};
   cursor: pointer;
   font-size: 1.3rem;
-  align-self: flex-end;
 
   a {
     color: ${props => props.theme.paragraphs};

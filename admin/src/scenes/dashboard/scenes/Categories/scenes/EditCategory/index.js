@@ -30,6 +30,7 @@ const EditCategory = props => {
     let newItem = {
       ...payload.data.updateCategory
     };
+    console.log(data);
 
     cache.writeQuery({
       query: QUERY_ALL_CATEGORIES,

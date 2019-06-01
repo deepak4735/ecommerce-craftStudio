@@ -9,12 +9,14 @@ import Categories from '../../scenes/Categories/index';
 import CreateNewCat from '../../scenes/Categories/scenes/CreateNewCat/index';
 import EditCategory from '../../scenes/Categories/scenes/EditCategory/index';
 import ProductTypes from '../../scenes/ProductTypes/index';
-import CreateProductType from '../../scenes/ProductTypes/scenes/CreateNewProductType/createNewProductType';
-import EditProductType from '../../scenes/ProductTypes/scenes/EditProductType/editProductType';
+import CreateProductType from '../../scenes/ProductTypes/scenes/CreateNewProductType/index';
+import EditProductType from '../../scenes/ProductTypes/scenes/EditProductType/index';
 import Tax from '../../scenes/Tax/index';
 import CreateTax from '../../scenes/Tax/scenes/CreateTax/index';
 import EditTax from '../../scenes/Tax/scenes/EditTax/index';
 import Stock from '../../scenes/Stock/index';
+import CreateStockLocation from '../../scenes/Stock/scenes/CreateStockLocation/index';
+import EditStockLocation from '../../scenes/Stock/scenes/EditStockLocation/index';
 import Orders from '../../scenes/Orders/index';
 
 // Import styles
@@ -49,8 +51,14 @@ const Main = () => {
           path='/product-types/create-product-type'
           component={CreateProductType}
         />
-        <Route exaxt path='/product-types' component={ProductTypes} />
+        <Route exact path='/product-types' component={ProductTypes} />
         <Route exact path='/orders' component={Orders} />
+        <Route exact path='/stock/edit/:id' component={EditStockLocation} />
+        <Route
+          exact
+          path='/stock/create-new-stock-location'
+          component={CreateStockLocation}
+        />
         <Route exact path='/stock' component={Stock} />
         <Route exact path='/taxes/edit/:id' component={EditTax} />
         <Route exact path='/taxes/create-new-tax' component={CreateTax} />

@@ -21,7 +21,6 @@ class Dashboard extends Component {
     return (
       <ThemeProvider theme={theme}>
         <DashboardContainer>
-          <Header />
           <SideNav />
           <Main />
         </DashboardContainer>

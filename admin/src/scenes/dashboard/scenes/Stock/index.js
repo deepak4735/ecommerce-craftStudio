@@ -61,7 +61,6 @@ const Stock = props => {
     <Composed>
       {({ queryCategory: { data, refetch, loading }, deleteSelected }) => {
         const stockLocations = data.stockLocations;
-        console.log(stockLocations);
         if (loading) return <p>Loading..</p>;
 
         return (
@@ -84,8 +83,8 @@ const Stock = props => {
                   </Button>
                 ) : null}
 
-                <Link to='/stockLocations/create-new-category'>
-                  <Button>Create new stock </Button>
+                <Link to='/stock/create-new-stock-location'>
+                  <Button>Create new stock location </Button>
                 </Link>
               </ButtonContainer>
             </ListNameAndBtnContainer>

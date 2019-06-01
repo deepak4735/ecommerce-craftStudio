@@ -20,6 +20,7 @@ export const ListNameAndBtnContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   margin-bottom: 2rem;
 
   h2 {

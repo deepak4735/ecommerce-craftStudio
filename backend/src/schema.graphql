@@ -45,14 +45,11 @@ type Mutation {
   deleteCategory(id: ID): Category
   deleteManyCategories(id_in: [ID!]): BatchPayload!
   createProductType(
-    id: ID
     name: String!
     shippingRequired: Boolean
     hasVariants: Boolean
     weight: WeightCreateOneInput
     taxes: TaxCreateOneInput
-    productAttributes: AttributeCreateManyWithoutProductTypeInput
-    variantAttributes: AttributeCreateManyWithoutProductVariantTypeInput
   ): ProductType
   updateProductType(
     id: ID
@@ -84,7 +81,7 @@ type Mutation {
     city: String!
   ): StockLocation
   updateStockLocation(
-    id: ID!
+    id: ID
     name: String
     address: String
     postNumber: Int

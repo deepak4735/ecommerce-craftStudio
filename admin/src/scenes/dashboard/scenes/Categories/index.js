@@ -61,7 +61,7 @@ const Categories = props => {
     }
   };
 
-  console.log(state);
+  console.log(props);
   return (
     <Composed>
       {({ queryCategory: { data, refetch, loading }, deleteSelected }) => {
@@ -94,7 +94,6 @@ const Categories = props => {
                 </Link>
               </ButtonContainer>
             </ListNameAndBtnContainer>
-
             <FormContainer>
               <FormHeaders>
                 <div style={{ width: '4rem' }} />

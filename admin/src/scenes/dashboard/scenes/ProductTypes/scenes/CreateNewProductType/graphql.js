@@ -2,17 +2,18 @@ import gql from 'graphql-tag';
 
 export const CREATE_PRODUCT_TYPE = gql`
   mutation CREATE_PRODUCT_TYPE(
-    $typeName: String!
+    $name: String!
     $shippingRequired: Boolean!
     $weight: WeightCreateInput
-    $tax: TaxCreateInput
+    $tax: TaxWhereUniqueInput
   ) {
     createProductType(
-      name: $typeName
+      name: $name
       shippingRequired: $shippingRequired
       weight: { create: $weight }
-      taxes: { create: $tax }
+      taxes: { connect: $tax }
     ) {
+      id
       name
       shippingRequired
       weight {
@@ -23,6 +24,16 @@ export const CREATE_PRODUCT_TYPE = gql`
         name
         taxRate
       }
+    }
+  }
+`;
+
+export const QUERY_ALL_TAXES = gql`
+  query QUERY_ALL_TAXES {
+    taxes {
+      id
+      name
+      taxRate
     }
   }
 `;

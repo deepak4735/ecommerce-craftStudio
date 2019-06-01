@@ -16,7 +16,7 @@ export const UPDATE_CATEGORY_MUTATION = gql`
     $description: String
   ) {
     updateCategory(id: $id, name: $name, description: $description) {
-      name
+      id
     }
   }
 `;

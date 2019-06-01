@@ -16,9 +16,16 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 1.5rem;
     line-height: 2;
   }
+
   a {
     text-decoration: none;
     color: white;
+  }
+
+  fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
   }
 
   p {

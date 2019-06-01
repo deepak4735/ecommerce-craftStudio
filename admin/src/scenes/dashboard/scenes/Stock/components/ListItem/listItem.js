@@ -24,24 +24,18 @@ const ListItem = props => {
         />
       </SelectBox>
       <CategoryName
-        onClick={e =>
-          props.history.push(`/stock-locations/edit/${props.data.id}`)
-        }
+        onClick={e => props.history.push(`/stock/edit/${props.data.id}`)}
       >
         {name}
       </CategoryName>
       <CategoryName
-        onClick={e =>
-          props.history.push(`/stock-locations/edit/${props.data.id}`)
-        }
+        onClick={e => props.history.push(`/stock/edit/${props.data.id}`)}
       >
         {city}
       </CategoryName>
       <CategoryName
         textAlign='center'
-        onClick={e =>
-          props.history.push(`/stock-locations/edit/${props.data.id}`)
-        }
+        onClick={e => props.history.push(`/stock/edit/${props.data.id}`)}
       >
         {postNumber}
       </CategoryName>

@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
 // Query
-export const EDIT_PRODUCT_TYPE = gql`
-  query EDIT_PRODUCT_TYPE($id: ID!) {
+export const QUERY_PRODUCT_TYPE = gql`
+  query QUERY_PRODUCT_TYPE($id: ID!) {
     productType(where: { id: $id }) {
       id
       name
